@@ -31,6 +31,11 @@ import carrent from "./home3.jpg";
 import jobit from "./home1.jpg";
 import tripguide from "./home2.jpg";
 
+import app_logo from "./app_logo.png";
+import qr_code from "./qr_code.png";
+import app_store from "./app_store.png";
+import google_play from "./google_play.png";
+
 export {
   logo,
   backend,
@@ -61,4 +66,8 @@ export {
   jobit,
   tripguide,
   logo_roomily,
+  app_logo,
+  qr_code,
+  app_store,
+  google_play,
 };

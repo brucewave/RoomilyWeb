@@ -26,7 +26,12 @@ const ProjectCard = ({
         }}
         className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full'
       >
-        <div className='relative w-full h-[230px]'>
+        <div className='relative w-full h-[230px] cursor-pointer' 
+          onClick={() => {
+            const element = document.getElementById('download');
+            element.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
           <img
             src={image}
             alt='project_image'
@@ -35,31 +40,41 @@ const ProjectCard = ({
 
           <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
             <div
-              onClick={() => window.open(source_code_link, "_blank")}
+              onClick={(e) => {
+                e.stopPropagation();
+                const element = document.getElementById('download');
+                element.scrollIntoView({ behavior: 'smooth' });
+              }}
               className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
             >
               <img
                 src={github}
-                alt='source code'
+                alt='download app'
                 className='w-1/2 h-1/2 object-contain'
               />
             </div>
           </div>
         </div>
 
-        <div className='mt-5'>
+        <div className='mt-5' onClick={(e) => {
+                e.stopPropagation();
+                const element = document.getElementById('download');
+                element.scrollIntoView({ behavior: 'smooth' });
+              }}>
           <h3 className='text-white font-bold text-[24px]'>{name}</h3>
           <p className='mt-2 text-secondary text-[14px]'>{description}</p>
         </div>
 
-        <div className='mt-4 flex flex-wrap gap-2'>
+        <div className='mt-4 flex flex-wrap gap-2' onClick={(e) => {
+                e.stopPropagation();
+                const element = document.getElementById('download');
+                element.scrollIntoView({ behavior: 'smooth' });
+              }}>
           {tags.map((tag) => (
-            <p
-              key={`${name}-${tag.name}`}
-              className={`text-[14px] ${tag.color}`}
-            >
-              #{tag.name}
-            </p>
+            <div key={`${name}-${tag.text}`} className='flex items-center'>
+              <img src={tag.icon} alt={tag.text} className='w-4 h-4 mr-1' />
+              <p className={`text-[14px] ${tag.color}`}>{tag.text}</p>
+            </div>
           ))}
         </div>
       </Tilt>

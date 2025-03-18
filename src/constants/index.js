@@ -29,6 +29,9 @@ import iso_friend from "../assets/iso_friend.png";
 import iso_market from "../assets/iso_market.png";
 import iso_move from "../assets/iso_move.png";
 import iso_room from "../assets/iso_room.png";
+import icon_size from "../assets/icon_size.png";
+import icon_price from "../assets/icon_price.png";
+import icon_furniture from "../assets/icon_furniture.png";
 
 export const navLinks = [
   {
@@ -125,7 +128,7 @@ const experiences = [
     company_name: "Roomily Search",
     icon: iso_room,
     iconBg: "#E6DEDD",
-    date: "Bước 1",
+    date: "Thông Minh",
     points: [
       "Tìm kiếm phòng trọ theo vị trí, giá cả và tiện ích mong muốn",
       "Xem hình ảnh thực tế và thông tin chi tiết về phòng trọ",
@@ -138,7 +141,7 @@ const experiences = [
     company_name: "Roomily Move",
     icon: iso_move,
     iconBg: "#383E56",
-    date: "Bước 2",
+    date: "Nhanh Chóng",
     points: [
       "Đội ngũ nhân viên chuyển đồ chuyên nghiệp, có bảo hiểm",
       "Xe tải các loại phù hợp với khối lượng đồ đạc",
@@ -151,7 +154,7 @@ const experiences = [
     company_name: "Roomily Connect",
     icon: iso_friend,
     iconBg: "#E6DEDD",
-    date: "Bước 3",
+    date: "Thực Tế",
     points: [
       "Tìm kiếm bạn cùng phòng theo sở thích và thói quen sinh hoạt",
       "Hệ thống xác thực thông tin người dùng an toàn",
@@ -164,7 +167,7 @@ const experiences = [
     company_name: "Roomily Store",
     icon: iso_market,
     iconBg: "#383E56",
-    date: "Dịch vụ đi kèm",
+    date: "Tiện Lợi",
     points: [
       "Đặt hàng tạp hóa trực tuyến với giá ưu đãi",
       "Giao hàng nhanh trong vòng 2 giờ",
@@ -208,15 +211,18 @@ const projects = [
       "Phòng trọ cao cấp tại trung tâm Quận 1, gần các trường đại học và khu vực văn phòng. Đầy đủ nội thất, an ninh 24/7, có ban công rộng rãi và view thành phố.",
     tags: [
       {
-        name: "25m²",
+        icon: icon_size,
+        text: "25m²",
         color: "blue-text-gradient",
       },
       {
-        name: "4.5tr/tháng",
+        icon: icon_price,
+        text: "4.5tr/tháng",
         color: "green-text-gradient",
       },
       {
-        name: "full nội thất",
+        icon: icon_furniture,
+        text: "full nội thất",
         color: "pink-text-gradient",
       },
     ],
@@ -229,15 +235,18 @@ const projects = [
       "Phòng trọ sinh viên gần Đại học Bách Khoa, khu dân cư an ninh, yên tĩnh. Có gác lửng, máy lạnh, tủ lạnh và kệ bếp. Miễn phí wifi và nước sinh hoạt.",
     tags: [
       {
-        name: "20m²",
+        icon: icon_size,
+        text: "20m²",
         color: "blue-text-gradient",
       },
       {
-        name: "3tr/tháng",
+        icon: icon_price,
+        text: "3tr/tháng",
         color: "green-text-gradient",
       },
       {
-        name: "có gác",
+        icon: icon_furniture,
+        text: "có gác",
         color: "pink-text-gradient",
       },
     ],
@@ -250,15 +259,18 @@ const projects = [
       "Căn hộ mini full nội thất cao cấp gần sân bay, phù hợp với người đi làm. Có bảo vệ 24/7, thang máy, hầm xe và camera an ninh. Cho phép nuôi thú cưng.",
     tags: [
       {
-        name: "30m²",
+        icon: icon_size,
+        text: "30m²",
         color: "blue-text-gradient",
       },
       {
-        name: "5tr/tháng",
+        icon: icon_price,
+        text: "5tr/tháng",
         color: "green-text-gradient",
       },
       {
-        name: "pet friendly",
+        icon: icon_furniture,
+        text: "pet friendly",
         color: "pink-text-gradient",
       },
     ],
