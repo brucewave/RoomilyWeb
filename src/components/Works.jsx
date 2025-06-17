@@ -26,50 +26,42 @@ const ProjectCard = ({
         }}
         className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full'
       >
-        <div className='relative w-full h-[230px] cursor-pointer' 
-          onClick={() => {
-            const element = document.getElementById('download');
-            element.scrollIntoView({ behavior: 'smooth' });
-          }}
-        >
-          <img
-            src={image}
-            alt='project_image'
-            className='w-full h-full object-cover rounded-2xl'
-          />
+        <div className='relative w-full h-[230px]'>
+          <iframe
+            width="100%"
+            height="100%"
+            src={source_code_link}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className='rounded-xl z-10 relative'
+          ></iframe>
 
-          <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
+          <div className='absolute top-3 right-3 z-20'>
             <div
               onClick={(e) => {
                 e.stopPropagation();
-                const element = document.getElementById('download');
-                element.scrollIntoView({ behavior: 'smooth' });
+                window.open(source_code_link, "_blank");
               }}
               className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
             >
               <img
                 src={github}
-                alt='download app'
+                alt='source code'
                 className='w-1/2 h-1/2 object-contain'
               />
             </div>
           </div>
         </div>
 
-        <div className='mt-5' onClick={(e) => {
-                e.stopPropagation();
-                const element = document.getElementById('download');
-                element.scrollIntoView({ behavior: 'smooth' });
-              }}>
+        <div className='mt-5'>
           <h3 className='text-white font-bold text-[24px]'>{name}</h3>
           <p className='mt-2 text-secondary text-[14px]'>{description}</p>
         </div>
 
-        <div className='mt-4 flex flex-wrap gap-2' onClick={(e) => {
-                e.stopPropagation();
-                const element = document.getElementById('download');
-                element.scrollIntoView({ behavior: 'smooth' });
-              }}>
+        <div className='mt-4 flex flex-wrap gap-2'>
           {tags.map((tag) => (
             <div key={`${name}-${tag.text}`} className='flex items-center'>
               <img src={tag.icon} alt={tag.text} className='w-4 h-4 mr-1' />
@@ -86,8 +78,8 @@ const Works = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>Danh sách phòng trọ</p>
-        <h2 className={`${styles.sectionHeadText}`}>Phòng Nổi Bật.</h2>
+        <p className={`${styles.sectionSubText} `}>Portfolio của tôi</p>
+        <h2 className={`${styles.sectionHeadText}`}>Dự Án Tiêu Biểu.</h2>
       </motion.div>
 
       <div className='w-full flex'>
@@ -95,10 +87,10 @@ const Works = () => {
           variants={fadeIn("", "", 0.1, 1)}
           className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
         >
-          Dưới đây là những phòng trọ nổi bật, được nhiều người quan tâm và 
-          đánh giá cao. Mỗi phòng đều được mô tả chi tiết với đầy đủ hình ảnh 
-          thực tế, giá cả và tiện ích đi kèm. Bạn có thể xem thông tin chi tiết 
-          và đặt lịch xem phòng trực tiếp thông qua nền tảng của chúng tôi.
+          Dưới đây là những dự án video tiêu biểu mà tôi đã thực hiện. Mỗi dự án đều được 
+          tạo ra với sự kết hợp của nhiều kỹ năng khác nhau như motion graphics, visual effects, 
+          color grading và audio mixing. Tôi luôn cố gắng mang đến những sản phẩm chất lượng cao 
+          và sáng tạo cho khách hàng, từ video quảng cáo bất động sản đến podcast và video giới thiệu trường học.
         </motion.p>
       </div>
 

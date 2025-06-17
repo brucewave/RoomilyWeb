@@ -14,6 +14,8 @@ const Room = ({ isMobile }) => {
     }
   });
 
+  if (isMobile) return null;
+
   return (
     <mesh ref={meshRef}>
       <hemisphereLight intensity={0.15} groundColor='black' />
@@ -28,9 +30,9 @@ const Room = ({ isMobile }) => {
       <pointLight intensity={1} />
       <primitive
         object={room.scene}
-        scale={isMobile ? 0.7 : 1.2}
-        position={isMobile ? [0, 0, 0] : [0, 0, 0]}
-        rotation={[0, 7, -0.15]}
+        scale={0.5}
+        position={[0, 0, 0]}
+        rotation={[-0.1, 6, -0.15]}
       />
     </mesh>
   );

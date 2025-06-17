@@ -17,12 +17,13 @@ const Hero = () => {
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
             Chào bạn đến với <br />
-            <span className='text-[#915EFF]'>ROOMILY</span>
+            <span className='text-[#915EFF]'>Thành Long</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            Thuê trọ thông minh <br className='sm:block hidden' />
-            Tìm phòng đơn giản
+            Tôi là một <br className='sm:block hidden' />
+            Video Editor & Designer chuyên nghiệp
           </p>
+         
         </div>
       </div>
 

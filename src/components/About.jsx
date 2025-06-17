@@ -19,7 +19,7 @@ const ServiceCard = ({ index, title, icon }) => (
           scale: 1,
           speed: 450,
         }}
-        className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
+        className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[250px] flex justify-evenly items-center flex-col'
       >
         <img
           src={icon}
@@ -38,21 +38,15 @@ const ServiceCard = ({ index, title, icon }) => (
 const About = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Giới thiệu</p>
-        <h2 className={styles.sectionHeadText}>Tổng quan.</h2>
+      <motion.div variants={textVariant()} className="text-center">
+        <h2 className={`${styles.sectionHeadText} mb-4`}>Giới thiệu</h2>
       </motion.div>
 
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
-        className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
+        className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px] mx-auto text-center'
       >
-        Roomily là nền tảng tìm trọ thông minh, giúp bạn tìm được phòng trọ 
-        phù hợp một cách nhanh chóng và thuận tiện. Chúng tôi cung cấp đầy đủ 
-        các dịch vụ đi kèm như: tìm trọ gần trường/công ty, dịch vụ chuyển trọ 
-        an toàn, kết nối với bạn cùng phòng tiềm năng, và cả cửa hàng tạp hóa 
-        trực tuyến để đáp ứng mọi nhu cầu sinh hoạt của bạn. Hãy để Roomily 
-        đồng hành cùng bạn trong hành trình tìm tổ ấm mới!
+        Tôi là một Video Editor chuyên nghiệp với kinh nghiệm làm việc với các phần mềm chỉnh sửa video hàng đầu như Adobe Premiere Pro, After Effects, và CapCut. Tôi có khả năng biến những thước phim thô thành những sản phẩm video chất lượng cao, đầy cảm xúc và truyền tải được thông điệp rõ ràng. Với kiến thức chuyên sâu về motion graphics, color grading và storytelling, tôi luôn tìm kiếm những thách thức mới để phát triển kỹ năng và tạo ra những sản phẩm sáng tạo, độc đáo.
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-10'>

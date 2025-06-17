@@ -42,10 +42,10 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo_roomily} alt='logo' className='w-9 h-9 object-contain' />
+          <img src={logo_roomily} alt='logo' className='w-24 h-24 object-contain' />
           <p className='text-white text-[18px] font-bold cursor-pointer flex '>
-            Roomily &nbsp;
-            <span className='sm:block hidden'> | Smart Rental, Made Simple</span>
+            
+            <span className='sm:block hidden'> | Video Editor & Designer</span>
           </p>
         </Link>
 

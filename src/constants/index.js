@@ -36,11 +36,11 @@ import icon_furniture from "../assets/icon_furniture.png";
 export const navLinks = [
   {
     id: "about",
-    title: "Về Chúng Tôi",
+    title: "Về Tôi",
   },
   {
-    id: "work",
-    title: "Tìm Phòng",
+    id: "projects",
+    title: "Kinh Ngiệm",
   },
   {
     id: "contact",
@@ -50,232 +50,248 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Tìm Trọ Thông Minh",
+    title: "Visual Effects",
     icon: iso_room,
   },
   {
-    title: "Dịch Vụ Chuyển Trọ",
+    title: "Video Editing",
     icon: iso_move,
   },
   {
-    title: "Kết Nối Bạn Cùng Phòng",
+    title: "Motion Graphics",
     icon: iso_friend,
   },
   {
-    title: "Tạp Hóa Online",
+    title: "Image Editing",
     icon: iso_market,
   },
 ];
 
 const technologies = [
   {
-    name: "HTML 5",
+    name: "After Effects",
     icon: html,
   },
   {
-    name: "CSS 3",
+    name: "Premiere Pro",
     icon: css,
   },
   {
-    name: "JavaScript",
+    name: "Photoshop",
     icon: javascript,
   },
   {
-    name: "TypeScript",
+    name: "CapCut",
     icon: typescript,
   },
   {
-    name: "React JS",
+    name: "DaVinci Resolve",
     icon: reactjs,
   },
   {
-    name: "Redux Toolkit",
+    name: "Audition",
     icon: redux,
-  },
-  {
-    name: "Tailwind CSS",
-    icon: tailwind,
-  },
-  {
-    name: "Node JS",
-    icon: nodejs,
-  },
-  {
-    name: "MongoDB",
-    icon: mongodb,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "git",
-    icon: git,
-  },
-  {
-    name: "figma",
-    icon: figma,
-  },
-  {
-    name: "docker",
-    icon: docker,
   },
 ];
 
 const experiences = [
   {
-    title: "Tìm Kiếm & Đặt Phòng",
-    company_name: "Roomily Search",
+    title: "Kinh nghiệm hơn 1 năm tại công ty giáo dục mầm non THÉ",
+    company_name: "Motion Graphics & Visual Effects",
     icon: iso_room,
     iconBg: "#E6DEDD",
-    date: "Thông Minh",
+    date: "2024",
+    videoUrl: "https://www.youtube.com/embed/zhD3C898WPs?si=t3g9aPIl_OToDbst",
     points: [
-      "Tìm kiếm phòng trọ theo vị trí, giá cả và tiện ích mong muốn",
-      "Xem hình ảnh thực tế và thông tin chi tiết về phòng trọ",
-      "So sánh giá và đánh giá từ người thuê trước",
-      "Đặt lịch xem phòng trực tiếp hoặc qua video call",
+      "Đạt được hơn 150 học viên mới trong 6 tháng thông qua quảng cáo Facebook",
+      "Được vinh danh là NHÂN VIÊN TÀI NĂNG của công ty",
+      "Thiết kế và sản xuất video quảng cáo chuyên nghiệp cho trường mầm non",
+      "Phát triển nội dung đa dạng cho các kênh truyền thông xã hội",
     ],
   },
   {
-    title: "Dịch Vụ Chuyển Trọ",
-    company_name: "Roomily Move",
+    title: "Xây dựng kênh YouTube từ con số 0",
+    company_name: "Content Creation & Channel Growth",
     icon: iso_move,
     iconBg: "#383E56",
-    date: "Nhanh Chóng",
+    date: "2024",
+    videoUrl: "https://www.youtube.com/embed/DeL-PcjYoaE?si=uSV9XaktNrEWOBZY",
     points: [
-      "Đội ngũ nhân viên chuyển đồ chuyên nghiệp, có bảo hiểm",
-      "Xe tải các loại phù hợp với khối lượng đồ đạc",
-      "Đóng gói cẩn thận, vận chuyển an toàn",
-      "Giá cả minh bạch, không phụ phí phát sinh",
+      "Phát triển kênh Nhà Đất Duy Bình Đắk Lắk đạt hơn 8000 người đăng ký",
+      "Tối ưu hóa SEO và thumbnail để tăng lượt xem",
+      "Xây dựng chiến lược nội dung dài hạn",
+      "Phân tích và tối ưu hiệu suất video",
     ],
   },
   {
-    title: "Kết Nối Bạn Cùng Phòng",
-    company_name: "Roomily Connect",
+    title: "Video Sự Kiện",
+    company_name: "Event Coverage & Editing",
     icon: iso_friend,
     iconBg: "#E6DEDD",
-    date: "Thực Tế",
+    date: "2024",
+    videoUrl: "https://www.youtube.com/embed/QB1MHmIXqK0?si=ekZUxFkE6P3YAqNg",
     points: [
-      "Tìm kiếm bạn cùng phòng theo sở thích và thói quen sinh hoạt",
-      "Hệ thống xác thực thông tin người dùng an toàn",
-      "Trò chuyện trực tiếp để tìm hiểu trước khi quyết định",
-      "Hỗ trợ tư vấn và giải quyết vấn đề 24/7",
+      "Quay và dựng video sự kiện chuyên nghiệp với góc máy đa dạng",
+      "Color grading nâng cao với DaVinci Resolve",
+      "Xử lý âm thanh chuyên nghiệp với Adobe Audition",
+      "Tối ưu hóa cho các nền tảng khác nhau",
     ],
   },
   {
-    title: "Tiện Ích Tạp Hóa",
-    company_name: "Roomily Store",
+    title: "Music Video",
+    company_name: "Visual Storytelling",
     icon: iso_market,
     iconBg: "#383E56",
-    date: "Tiện Lợi",
+    date: "2024",
+    videoUrl: "https://www.youtube.com/embed/QB1MHmIXqK0?si=PnQBOmo9w9is9C8s",
     points: [
-      "Đặt hàng tạp hóa trực tuyến với giá ưu đãi",
-      "Giao hàng nhanh trong vòng 2 giờ",
-      "Đa dạng sản phẩm từ thực phẩm đến đồ dùng sinh hoạt",
-      "Tích điểm đổi quà và nhận nhiều ưu đãi hấp dẫn",
+      "Sáng tạo concept và storyboard cho video âm nhạc",
+      "Áp dụng kỹ thuật visual effects nâng cao",
+      "Tối ưu hóa cho từng nền tảng streaming",
+      "Thu và chỉnh âm thanh chuyên nghiệp với Pro Tools",
     ],
   },
 ];
 
-const testimonials = [
-  {
-    testimonial:
-      "Roomily giúp tôi tìm được phòng trọ ưng ý chỉ trong vòng 2 ngày. Dịch vụ chuyển trọ cũng rất chuyên nghiệp và đáng tin cậy!",
-    name: "Nguyễn Thanh Hà",
-    designation: "Sinh viên",
-    company: "Đại học Bách Khoa",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
-  },
-  {
-    testimonial:
-      "Tôi rất hài lòng với dịch vụ tìm bạn cùng phòng của Roomily. Nhờ đó tôi đã tìm được người bạn cùng phòng có cùng sở thích và thói quen sinh hoạt.",
-    name: "Trần Minh Đức",
-    designation: "Nhân viên văn phòng",
-    company: "FPT Software",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
-  },
-  {
-    testimonial:
-      "Dịch vụ tạp hóa online của Roomily thực sự tiện lợi. Giao hàng nhanh, giá cả hợp lý và đặc biệt là chương trình tích điểm rất hấp dẫn!",
-    name: "Phạm Thu Trang",
-    designation: "Giáo viên",
-    company: "Trường THPT Lê Quý Đôn",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
-  },
-];
+const testimonials = {
+  videos: [
+    {
+      name: "Quảng Bá Kênh Nhà Đất Duy Bình Đắk Lắk",
+      description: "Video quảng cáo chuyên nghiệp với motion graphics và visual effects",
+      videoUrl: "https://www.youtube.com/embed/DeL-PcjYoaE?si=cQc_Cve8gQ7TTHho",
+    },
+    {
+      name: "Quảng Bá Trường mầm non THÉ School",
+      description: "Video giới thiệu trường mầm non với hiệu ứng và transition độc đáo",
+      videoUrl: "https://www.youtube.com/embed/zhD3C898WPs?si=4S9mhu4S30D64EJ-",
+    },
+    {
+      name: "Quảng cáo lớp tiền tiểu học",
+      description: "Video quảng cáo lớp học với motion graphics và animation",
+      videoUrl: "https://www.youtube.com/embed/ayvUM5VqM5k?si=NAm3oW-nQKzwTi8E",
+    },
+    {
+      name: "Đại Hội Thể Thao",
+      description: "Video tổng hợp sự kiện thể thao với color grading chuyên nghiệp",
+      videoUrl: "https://www.youtube.com/embed/qEDAAT3-mCM?si=qOJQGxGPqOIE99yE",
+    },
+    {
+      name: "Tốt nghiệp mầm non",
+      description: "Video sự kiện tốt nghiệp với âm thanh và hình ảnh chất lượng cao",
+      videoUrl: "https://www.youtube.com/embed/SJwNlredp0o?si=WyxLKZiqEht0HOEl",
+    },
+    {
+      name: "Sự kiện tết",
+      description: "Video tổng hợp sự kiện tết với hiệu ứng và transition đẹp mắt",
+      videoUrl: "https://www.youtube.com/embed/jathvtva7kU?si=mzbhp3p1mhbPxmPu",
+    },
+    {
+      name: "Podcast Phản Hồi Giáo Viên",
+      description: "Video podcast với âm thanh và hình ảnh chuyên nghiệp",
+      videoUrl: "https://www.youtube.com/embed/-A2nd09b-Hs?si=AnYNYAWPy36PWJea",
+    },
+    {
+      name: "Podcast chú Duy Mạnh",
+      description: "Video podcast với hiệu ứng và transition độc đáo",
+      videoUrl: "https://www.youtube.com/embed/UGjDT97emSk?si=AC_ORsMV6FqpoRTb",
+    },
+    {
+      name: "Music Video",
+      description: "Video âm nhạc với visual effects và color grading chuyên nghiệp",
+      videoUrl: "https://www.youtube.com/embed/QB1MHmIXqK0?si=-sE6T6VBTNDZdDL_",
+    },
+  ],
+  images: [
+    {
+      name: "Hình ảnh dự án 1",
+      description: "Mô tả dự án hình ảnh 1",
+      image: carrent,
+    },
+    {
+      name: "Hình ảnh dự án 2",
+      description: "Mô tả dự án hình ảnh 2",
+      image: jobit,
+    },
+    {
+      name: "Hình ảnh dự án 3",
+      description: "Mô tả dự án hình ảnh 3",
+      image: tripguide,
+    },
+  ],
+};
 
 const projects = [
   {
-    name: "Phòng Trọ Quận 1",
+    name: "Nhà Đất Duy Bình",
     description:
-      "Phòng trọ cao cấp tại trung tâm Quận 1, gần các trường đại học và khu vực văn phòng. Đầy đủ nội thất, an ninh 24/7, có ban công rộng rãi và view thành phố.",
+      "Video quảng cáo chuyên nghiệp cho kênh nhà đất Duy Bình Đắk Lắk. Sử dụng motion graphics và visual effects để tạo ra một video quảng cáo ấn tượng và chuyên nghiệp.",
     tags: [
       {
         icon: icon_size,
-        text: "25m²",
+        text: "Motion Graphics",
         color: "blue-text-gradient",
       },
       {
         icon: icon_price,
-        text: "4.5tr/tháng",
+        text: "After Effects",
         color: "green-text-gradient",
       },
       {
         icon: icon_furniture,
-        text: "full nội thất",
+        text: "Visual Effects",
         color: "pink-text-gradient",
       },
     ],
     image: carrent,
-    source_code_link: "https://github.com/",
+    source_code_link: "https://www.youtube.com/embed/DeL-PcjYoaE?si=cQc_Cve8gQ7TTHho",
   },
   {
-    name: "Phòng Trọ Thủ Đức",
+    name: "Podcast Chú Duy Mạnh",
     description:
-      "Phòng trọ sinh viên gần Đại học Bách Khoa, khu dân cư an ninh, yên tĩnh. Có gác lửng, máy lạnh, tủ lạnh và kệ bếp. Miễn phí wifi và nước sinh hoạt.",
+      "Video podcast với hiệu ứng và transition độc đáo. Tạo ra một không khí chuyên nghiệp và hấp dẫn cho người xem.",
     tags: [
       {
         icon: icon_size,
-        text: "20m²",
+        text: "Video Editing",
         color: "blue-text-gradient",
       },
       {
         icon: icon_price,
-        text: "3tr/tháng",
+        text: "Premiere Pro",
         color: "green-text-gradient",
       },
       {
         icon: icon_furniture,
-        text: "có gác",
+        text: "Audio Mixing",
         color: "pink-text-gradient",
       },
     ],
     image: jobit,
-    source_code_link: "https://github.com/",
+    source_code_link: "https://www.youtube.com/embed/UGjDT97emSk?si=AC_ORsMV6FqpoRTb",
   },
   {
-    name: "Phòng Trọ Tân Bình",
+    name: "School Tour",
     description:
-      "Căn hộ mini full nội thất cao cấp gần sân bay, phù hợp với người đi làm. Có bảo vệ 24/7, thang máy, hầm xe và camera an ninh. Cho phép nuôi thú cưng.",
+      "Video giới thiệu trường mầm non với hiệu ứng và transition độc đáo. Tạo ra một video tour trường học chuyên nghiệp và hấp dẫn.",
     tags: [
       {
         icon: icon_size,
-        text: "30m²",
+        text: "Motion Graphics",
         color: "blue-text-gradient",
       },
       {
         icon: icon_price,
-        text: "5tr/tháng",
+        text: "After Effects",
         color: "green-text-gradient",
       },
       {
         icon: icon_furniture,
-        text: "pet friendly",
+        text: "Color Grading",
         color: "pink-text-gradient",
       },
     ],
     image: tripguide,
-    source_code_link: "https://github.com/",
+    source_code_link: "https://www.youtube.com/embed/zhD3C898WPs?si=4S9mhu4S30D64EJ-",
   },
 ];
 

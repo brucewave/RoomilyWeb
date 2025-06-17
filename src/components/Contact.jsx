@@ -1,6 +1,5 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
 
 import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
@@ -8,62 +7,6 @@ import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 
 const Contact = () => {
-  const formRef = useRef();
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e) => {
-    const { target } = e;
-    const { name, value } = target;
-
-    setForm({
-      ...form,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    emailjs
-      .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          to_name: "Roomily",
-          from_email: form.email,
-          to_email: "contact@roomily.vn",
-          message: form.message,
-        },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert("Cảm ơn bạn. Chúng tôi sẽ phản hồi sớm nhất có thể!");
-
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
-
-          alert("Đã có lỗi xảy ra. Vui lòng thử lại sau.");
-        }
-      );
-  };
-
   return (
     <div
       className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
@@ -72,55 +15,54 @@ const Contact = () => {
         variants={slideIn("left", "tween", 0.2, 1)}
         className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
       >
-        <p className={styles.sectionSubText}>Liên hệ với chúng tôi</p>
+        <p className={styles.sectionSubText}>Nhấn trực tiếp vào các nút dưới để</p>
         <h3 className={styles.sectionHeadText}>Liên Hệ.</h3>
 
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className='mt-12 flex flex-col gap-8'
-        >
-          <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Họ và tên</span>
-            <input
-              type='text'
-              name='name'
-              value={form.name}
-              onChange={handleChange}
-              placeholder="Vui lòng nhập họ tên của bạn"
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
-            />
-          </label>
-          <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Email</span>
-            <input
-              type='email'
-              name='email'
-              value={form.email}
-              onChange={handleChange}
-              placeholder="Vui lòng nhập địa chỉ email"
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
-            />
-          </label>
-          <label className='flex flex-col'>
-            <span className='text-white font-medium mb-4'>Nội dung tin nhắn</span>
-            <textarea
-              rows={7}
-              name='message'
-              value={form.message}
-              onChange={handleChange}
-              placeholder='Bạn cần hỗ trợ vấn đề gì?'
-              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
-            />
-          </label>
+        <div className='mt-12 flex flex-col gap-8'>
+          {/* Phone Contact */}
+          <div className='flex flex-col'>
+            <span className='text-white font-medium mb-4'>Gọi điện trực tiếp</span>
+            <a 
+              href="tel:0349402518"
+              className='bg-tertiary py-4 px-6 text-white rounded-lg outline-none border-none font-medium hover:bg-[#2a2a2a] transition-all duration-300 flex items-center justify-center'
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              0349402518
+            </a>
+          </div>
 
-          <button
-            type='submit'
-            className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
-          >
-            {loading ? "Đang gửi..." : "Gửi"}
-          </button>
-        </form>
+          {/* Email Contact */}
+          <div className='flex flex-col'>
+            <span className='text-white font-medium mb-4'>Email</span>
+            <a 
+              href="mailto:your.email@example.com"
+              className='bg-tertiary py-4 px-6 text-white rounded-lg outline-none border-none font-medium hover:bg-[#2a2a2a] transition-all duration-300 flex items-center justify-center'
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              longthanh.dev@gmail.com
+            </a>
+          </div>
+
+          {/* Zalo Contact */}
+          <div className='flex flex-col'>
+            <span className='text-white font-medium mb-4'>Zalo</span>
+            <a 
+              href="https://zalo.me/0349402518"
+              target="_blank"
+              rel="noopener noreferrer"
+              className='bg-tertiary py-4 px-6 text-white rounded-lg outline-none border-none font-medium hover:bg-[#2a2a2a] transition-all duration-300 flex items-center justify-center'
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+              Chat Zalo: 0349402518
+            </a>
+          </div>
+        </div>
       </motion.div>
 
       <motion.div
