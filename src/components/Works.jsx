@@ -16,6 +16,13 @@ const ProjectCard = ({
   image,
   source_code_link,
 }) => {
+  // Check if the website URL is accessible or use placeholder
+  const isWebsiteAccessible = (url) => {
+    // List of websites that are known to work
+    const workingWebsites = ['https://hdspiano.com', 'https://the.edu.vn'];
+    return workingWebsites.includes(url);
+  };
+
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
@@ -27,17 +34,25 @@ const ProjectCard = ({
         className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full'
       >
         <div className='relative w-full h-[230px]'>
-          <iframe
-            width="100%"
-            height="100%"
-            src={source_code_link}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-            className='rounded-xl z-10 relative'
-          ></iframe>
+          {isWebsiteAccessible(source_code_link) ? (
+            <iframe
+              width="100%"
+              height="100%"
+              src={source_code_link}
+              title="Website preview"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className='rounded-xl z-10 relative'
+            />
+          ) : (
+            <div className='w-full h-full bg-gray-700 rounded-xl flex flex-col items-center justify-center'>
+              <div className='text-6xl mb-2'>🌐</div>
+              <p className='text-white text-sm text-center px-4'>Website Preview</p>
+              <p className='text-gray-400 text-xs text-center px-4 mt-1'>{name}</p>
+            </div>
+          )}
 
           <div className='absolute top-3 right-3 z-20'>
             <div
@@ -87,10 +102,10 @@ const Works = () => {
           variants={fadeIn("", "", 0.1, 1)}
           className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
         >
-          Dưới đây là những dự án video tiêu biểu mà tôi đã thực hiện. Mỗi dự án đều được 
-          tạo ra với sự kết hợp của nhiều kỹ năng khác nhau như motion graphics, visual effects, 
-          color grading và audio mixing. Tôi luôn cố gắng mang đến những sản phẩm chất lượng cao 
-          và sáng tạo cho khách hàng, từ video quảng cáo bất động sản đến podcast và video giới thiệu trường học.
+          Dưới đây là những dự án WordPress tiêu biểu mà tôi đã thực hiện. Mỗi dự án đều được 
+          tạo ra với sự kết hợp của nhiều kỹ năng khác nhau như WordPress development, WooCommerce integration, 
+          theme customization và SEO optimization. Tôi luôn cố gắng mang đến những sản phẩm web chất lượng cao 
+          và chuyên nghiệp cho khách hàng, từ website thương mại điện tử đến website công ty và landing page.
         </motion.p>
       </div>
 

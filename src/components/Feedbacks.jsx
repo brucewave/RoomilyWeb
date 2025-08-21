@@ -11,31 +11,48 @@ const VideoCard = ({
   name,
   description,
   videoUrl,
-}) => (
-  <motion.div
-    variants={fadeIn("", "spring", index * 0.5, 0.75)}
-    className='bg-black-200 p-5 rounded-3xl xs:w-[320px] w-full'
-  >
-    <div className='relative w-full h-[200px]'>
-      <iframe
-        width="100%"
-        height="100%"
-        src={videoUrl}
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-        className='rounded-xl'
-      ></iframe>
-    </div>
+}) => {
+  // Check if the website URL is accessible or use placeholder
+  const isWebsiteAccessible = (url) => {
+    // List of websites that are known to work
+    const workingWebsites = ['https://hdspiano.com', 'https://the.edu.vn'];
+    return workingWebsites.includes(url);
+  };
 
-    <div className='mt-4'>
-      <h3 className='text-white font-bold text-[20px]'>{name}</h3>
-      <p className='mt-2 text-secondary text-[14px]'>{description}</p>
-    </div>
-  </motion.div>
-);
+  return (
+    <motion.div
+      variants={fadeIn("", "spring", index * 0.5, 0.75)}
+      className='bg-black-200 p-5 rounded-3xl xs:w-[320px] w-full'
+    >
+      <div className='relative w-full h-[200px]'>
+        {isWebsiteAccessible(videoUrl) ? (
+          <iframe
+            width="100%"
+            height="100%"
+            src={videoUrl}
+            title="Website preview"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className='rounded-xl'
+          />
+        ) : (
+          <div className='w-full h-full bg-gray-700 rounded-xl flex flex-col items-center justify-center'>
+            <div className='text-4xl mb-2'>🌐</div>
+            <p className='text-white text-xs text-center px-2'>Website Preview</p>
+            <p className='text-gray-400 text-xs text-center px-2 mt-1'>{name}</p>
+          </div>
+        )}
+      </div>
+
+      <div className='mt-4'>
+        <h3 className='text-white font-bold text-[20px]'>{name}</h3>
+        <p className='mt-2 text-secondary text-[14px]'>{description}</p>
+      </div>
+    </motion.div>
+  );
+};
 
 const ImageCard = ({
   index,
@@ -76,7 +93,7 @@ const Feedbacks = () => {
 
       {/* Video Projects Section */}
       <div className={`-mt-20 pb-14 ${styles.paddingX}`}>
-        <h3 className='text-white text-[24px] font-bold mb-8'>Video Projects</h3>
+        <h3 className='text-white text-[24px] font-bold mb-8'>WordPress Projects</h3>
         <div className='flex flex-wrap gap-7'>
           {testimonials.videos.map((project, index) => (
             <VideoCard key={project.name} index={index} {...project} />

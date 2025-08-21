@@ -46,7 +46,7 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px] mx-auto text-center'
       >
-        Tôi là một Video Editor chuyên nghiệp với kinh nghiệm làm việc với các phần mềm chỉnh sửa video hàng đầu như Adobe Premiere Pro, After Effects, và CapCut. Tôi có khả năng biến những thước phim thô thành những sản phẩm video chất lượng cao, đầy cảm xúc và truyền tải được thông điệp rõ ràng. Với kiến thức chuyên sâu về motion graphics, color grading và storytelling, tôi luôn tìm kiếm những thách thức mới để phát triển kỹ năng và tạo ra những sản phẩm sáng tạo, độc đáo.
+        Tôi là một WordPress Developer chuyên nghiệp với kinh nghiệm phát triển website sử dụng WordPress, WooCommerce, Elementor và Flatsome. Tôi có khả năng tạo ra những website thương mại điện tử, website công ty và landing page chuyên nghiệp với giao diện đẹp mắt và hiệu suất tối ưu. Với kiến thức chuyên sâu về WordPress development, theme customization, plugin development và SEO optimization, tôi luôn tìm kiếm những thách thức mới để phát triển kỹ năng và tạo ra những sản phẩm web sáng tạo, độc đáo.
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-10'>
