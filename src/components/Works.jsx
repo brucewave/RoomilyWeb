@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 
@@ -22,19 +22,26 @@ const ProjectCard = ({
     const workingWebsites = ['https://hdspiano.com', 'https://the.edu.vn'];
     return workingWebsites.includes(url);
   };
+  const getWebsitePreviewImage = (url) =>
+    `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=1200`;
+  const [showFallbackImage, setShowFallbackImage] = useState(!isWebsiteAccessible(source_code_link));
+  const [isFallbackImageError, setIsFallbackImageError] = useState(false);
 
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+    <motion.div
+      variants={fadeIn("up", "spring", index * 0.5, 0.75)}
+      className='w-full md:w-[calc(50%-14px)]'
+    >
       <Tilt
         options={{
           max: 45,
           scale: 1,
           speed: 450,
         }}
-        className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full'
+        className='bg-tertiary p-5 rounded-2xl w-full'
       >
-        <div className='relative w-full h-[230px]'>
-          {isWebsiteAccessible(source_code_link) ? (
+        <div className='relative w-full h-[300px]'>
+          {!showFallbackImage ? (
             <iframe
               width="100%"
               height="100%"
@@ -45,7 +52,23 @@ const ProjectCard = ({
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
               className='rounded-xl z-10 relative'
+              onError={() => setShowFallbackImage(true)}
             />
+          ) : !isFallbackImageError ? (
+            <a
+              href={source_code_link}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='block w-full h-full'
+            >
+              <img
+                src={getWebsitePreviewImage(source_code_link)}
+                alt={`${name} preview`}
+                className='w-full h-full rounded-xl object-cover'
+                loading='lazy'
+                onError={() => setIsFallbackImageError(true)}
+              />
+            </a>
           ) : (
             <div className='w-full h-full bg-gray-700 rounded-xl flex flex-col items-center justify-center'>
               <div className='text-6xl mb-2'>🌐</div>
@@ -72,7 +95,16 @@ const ProjectCard = ({
         </div>
 
         <div className='mt-5'>
-          <h3 className='text-white font-bold text-[24px]'>{name}</h3>
+          <h3 className='text-white font-bold text-[24px]'>
+            <a
+              href={source_code_link}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='hover:text-[#915EFF] transition-colors duration-200'
+            >
+              {name}
+            </a>
+          </h3>
           <p className='mt-2 text-secondary text-[14px]'>{description}</p>
         </div>
 

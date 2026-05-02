@@ -94,9 +94,9 @@ const experiences = [
   {
     title: "EverestCoffees.com",
     company_name: "WordPress, Flatsome",
-    icon: html,
+    icon: web,
     iconBg: "#E6DEDD",
-    date: "2025",
+    date: "2024",
     videoUrl: "https://everestcoffees.com",
     points: [
       "E-commerce website for selling coffee products",
@@ -106,25 +106,11 @@ const experiences = [
     ],
   },
   {
-    title: "HDSPiano.com",
-    company_name: "WordPress, Flatsome",
-    icon: css,
-    iconBg: "#383E56",
-    date: "2024",
-    videoUrl: "https://hdspiano.com",
-    points: [
-      "E-commerce & online course website",
-      "Selling musical instruments and piano lessons",
-      "Custom content management system",
-      "Integrated payment and course delivery",
-    ],
-  },
-  {
     title: "Hoanglongtscl.com",
     company_name: "WordPress, Elementor",
-    icon: javascript,
+    icon: backend,
     iconBg: "#E6DEDD",
-    date: "2024",
+    date: "2026",
     videoUrl: "https://hoanglongtscl.com",
     points: [
       "Corporate website for air supply machines",
@@ -136,7 +122,7 @@ const experiences = [
   {
     title: "The.edu.vn",
     company_name: "WordPress",
-    icon: reactjs,
+    icon: mobile,
     iconBg: "#383E56",
     date: "2023",
     videoUrl: "https://the.edu.vn",
@@ -150,7 +136,7 @@ const experiences = [
   {
     title: "Finnolla.vn",
     company_name: "WordPress, Elementor",
-    icon: typescript,
+    icon: creator,
     iconBg: "#E6DEDD",
     date: "2025",
     videoUrl: "https://finnolla.vn",
@@ -164,7 +150,7 @@ const experiences = [
   {
     title: "Agarclassic.com",
     company_name: "WordPress, Flatsome",
-    icon: tailwind,
+    icon: docker,
     iconBg: "#383E56",
     date: "2023",
     videoUrl: "https://agarclassic.com",
@@ -279,9 +265,9 @@ const projects = [
     source_code_link: "https://hdspiano.com",
   },
   {
-    name: "Hoanglongtscl.com",
+    name: "Finnolla.vn",
     description:
-      "Corporate website for air supply machines, developed with responsive UI and optimized performance. Professional business presentation with Elementor page builder.",
+      "Website du học và định cư Phần Lan, tập trung tư vấn lộ trình học tập, nội dung sự kiện và chuyển đổi đăng ký tư vấn cho khách hàng.",
     tags: [
       {
         icon: icon_size,
@@ -290,17 +276,41 @@ const projects = [
       },
       {
         icon: icon_price,
-        text: "Elementor",
+        text: "Education",
         color: "green-text-gradient",
       },
       {
         icon: icon_furniture,
-        text: "Corporate",
+        text: "Landing Page",
         color: "pink-text-gradient",
       },
     ],
     image: tripguide,
-    source_code_link: "https://hoanglongtscl.com",
+    source_code_link: "https://finnolla.vn",
+  },
+  {
+    name: "The.edu.vn",
+    description:
+      "Website giáo dục cho mầm non, tập trung giới thiệu chương trình học, hoạt động trải nghiệm và thông tin tư vấn tuyển sinh cho phụ huynh.",
+    tags: [
+      {
+        icon: icon_size,
+        text: "WordPress",
+        color: "blue-text-gradient",
+      },
+      {
+        icon: icon_price,
+        text: "Education",
+        color: "green-text-gradient",
+      },
+      {
+        icon: icon_furniture,
+        text: "Landing Page",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: carrent,
+    source_code_link: "https://the.edu.vn",
   },
 ];
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
@@ -18,6 +18,10 @@ const VideoCard = ({
     const workingWebsites = ['https://hdspiano.com', 'https://the.edu.vn'];
     return workingWebsites.includes(url);
   };
+  const getWebsitePreviewImage = (url) =>
+    `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=1200`;
+  const [showFallbackImage, setShowFallbackImage] = useState(!isWebsiteAccessible(videoUrl));
+  const [isFallbackImageError, setIsFallbackImageError] = useState(false);
 
   return (
     <motion.div
@@ -25,7 +29,7 @@ const VideoCard = ({
       className='bg-black-200 p-5 rounded-3xl xs:w-[320px] w-full'
     >
       <div className='relative w-full h-[200px]'>
-        {isWebsiteAccessible(videoUrl) ? (
+        {!showFallbackImage ? (
           <iframe
             width="100%"
             height="100%"
@@ -36,7 +40,23 @@ const VideoCard = ({
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
             className='rounded-xl'
+            onError={() => setShowFallbackImage(true)}
           />
+        ) : !isFallbackImageError ? (
+          <a
+            href={videoUrl}
+            target='_blank'
+            rel='noopener noreferrer'
+            className='block w-full h-full'
+          >
+            <img
+              src={getWebsitePreviewImage(videoUrl)}
+              alt={`${name} preview`}
+              className='w-full h-full rounded-xl object-cover'
+              loading='lazy'
+              onError={() => setIsFallbackImageError(true)}
+            />
+          </a>
         ) : (
           <div className='w-full h-full bg-gray-700 rounded-xl flex flex-col items-center justify-center'>
             <div className='text-4xl mb-2'>🌐</div>

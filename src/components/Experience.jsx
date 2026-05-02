@@ -1,16 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
-import { motion } from "framer-motion";
 
 import "react-vertical-timeline-component/style.min.css";
 
 import { styles } from "../styles";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
-import { textVariant } from "../utils/motion";
 
 const VideoCard = ({ experience }) => {
   // Check if the website URL is accessible or use placeholder
@@ -19,6 +17,12 @@ const VideoCard = ({ experience }) => {
     const workingWebsites = ['https://hdspiano.com', 'https://the.edu.vn'];
     return workingWebsites.includes(url);
   };
+  const getWebsitePreviewImage = (url) =>
+    `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=1200`;
+  const [showFallbackImage, setShowFallbackImage] = useState(
+    !isWebsiteAccessible(experience.videoUrl)
+  );
+  const [isFallbackImageError, setIsFallbackImageError] = useState(false);
 
   return (
     <VerticalTimelineElement
@@ -28,6 +32,7 @@ const VideoCard = ({ experience }) => {
       }}
       contentArrowStyle={{ borderRight: "7px solid  #232631" }}
       date={experience.date}
+      dateClassName='text-white'
       iconStyle={{ background: experience.iconBg }}
       icon={
         <div className='flex justify-center items-center w-full h-full'>
@@ -50,7 +55,7 @@ const VideoCard = ({ experience }) => {
       </div>
 
       <div className='mt-5 relative w-full h-[315px]'>
-        {isWebsiteAccessible(experience.videoUrl) ? (
+        {!showFallbackImage ? (
           <iframe
             width="100%"
             height="100%"
@@ -61,7 +66,23 @@ const VideoCard = ({ experience }) => {
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
             className='rounded-xl'
+            onError={() => setShowFallbackImage(true)}
           />
+        ) : !isFallbackImageError ? (
+          <a
+            href={experience.videoUrl}
+            target='_blank'
+            rel='noopener noreferrer'
+            className='block w-full h-full'
+          >
+            <img
+              src={getWebsitePreviewImage(experience.videoUrl)}
+              alt={`${experience.title} preview`}
+              className='w-full h-full rounded-xl object-cover'
+              loading='lazy'
+              onError={() => setIsFallbackImageError(true)}
+            />
+          </a>
         ) : (
           <div className='w-full h-full bg-gray-700 rounded-xl flex flex-col items-center justify-center'>
             <div className='text-6xl mb-2'>🌐</div>
@@ -88,14 +109,20 @@ const VideoCard = ({ experience }) => {
 const Experience = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} text-center`}>
-          WordPress Portfolio
+      <div>
+        <p
+          className={`${styles.sectionSubText} text-center`}
+          style={{ color: "#b8b5c8" }}
+        >
+          Hành trình phát triển dự án
         </p>
-        <h2 className={`${styles.sectionHeadText} text-center`}>
-          Các Dự Án WordPress
+        <h2
+          className={`${styles.sectionHeadText} text-center`}
+          style={{ color: "#ffffff", textShadow: "0 2px 12px rgba(0,0,0,0.35)" }}
+        >
+          Kinh Nghiệm Làm Việc
         </h2>
-      </motion.div>
+      </div>
 
       <div className='mt-20 flex flex-col'>
         <VerticalTimeline>
