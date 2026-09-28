@@ -1,33 +1,49 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 import { featured } from "../constants";
 import { gsap } from "../smooth";
-import AutoVideo from "./AutoVideo";
 
 const host = featured.url.replace(/^https?:\/\/(www\.)?/, "");
+const STEP_MS = 3500;
 
-// Khối dự án nổi bật: khung trình duyệt phát video cuộn thật của MTHouse.vn,
-// phóng to dần khi cuộn tới (dùng lại đúng kiểu hiệu ứng của chính trang đó).
+// Khối dự án nổi bật: khung trình duyệt lần lượt hiện các khung hình cắt từ lúc cuộn
+// MTHouse.vn thật (ảnh tĩnh, không dùng video), phóng to dần khi cuộn tới.
 const Featured = () => {
   const frameRef = useRef(null);
+  const [active, setActive] = useState(0);
+  const [hold, setHold] = useState(false);
+  const [inView, setInView] = useState(false);
 
   useLayoutEffect(() => {
     const mm = gsap.matchMedia();
     mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
       gsap.fromTo(
         frameRef.current,
-        { scale: 0.82, borderRadius: 40 },
+        { scale: 0.86, borderRadius: 36 },
         {
           scale: 1,
           borderRadius: 16,
           ease: "none",
-          scrollTrigger: { trigger: frameRef.current, start: "top 95%", end: "top 20%", scrub: true },
+          scrollTrigger: { trigger: frameRef.current, start: "top 95%", end: "top 25%", scrub: true },
         }
       );
     });
     return () => mm.revert();
   }, []);
+
+  useEffect(() => {
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.4 });
+    io.observe(frameRef.current);
+    return () => io.disconnect();
+  }, []);
+
+  // Tự chuyển khung khi đang nhìn thấy; rê chuột hoặc bấm chọn thì dừng lại.
+  useEffect(() => {
+    if (!inView || hold || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setInterval(() => setActive((i) => (i + 1) % featured.frames.length), STEP_MS);
+    return () => clearInterval(id);
+  }, [inView, hold]);
 
   return (
     <section id='featured' className='pt-section'>
@@ -48,7 +64,12 @@ const Featured = () => {
           <p className='max-w-md text-[17px] text-secondary md:justify-self-end'>{featured.summary}</p>
         </motion.div>
 
-        <div ref={frameRef} className='mt-12 origin-top overflow-hidden rounded-2xl border border-line bg-black-100 will-change-transform'>
+        <div
+          ref={frameRef}
+          onMouseEnter={() => setHold(true)}
+          onMouseLeave={() => setHold(false)}
+          className='mt-12 origin-top overflow-hidden rounded-2xl border border-line bg-black-100 will-change-transform'
+        >
           <div className='flex items-center gap-3 border-b border-line px-4 py-3'>
             <span className='flex gap-1.5' aria-hidden='true'>
               <i className='h-3 w-3 rounded-full bg-[#ff5f57]' />
@@ -65,29 +86,60 @@ const Featured = () => {
               Mở website ↗
             </a>
           </div>
-          <AutoVideo
-            src={featured.video}
-            poster={featured.poster}
-            label={`Quay màn hình cuộn trang ${featured.name}`}
-            threshold={0.35}
-            className='aspect-[16/10]'
-          />
+
+          <div className='relative aspect-[16/10]'>
+            {featured.frames.map((f, i) => (
+              <img
+                key={f.src}
+                src={f.src}
+                alt={`${featured.name}: ${f.caption}`}
+                width='1280'
+                height='800'
+                loading='lazy'
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+                  i === active ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Các bước hiệu ứng: bấm để xem, vạch tím chạy thể hiện thời gian tới bước kế. */}
+          <ol className='grid grid-cols-2 gap-px border-t border-line bg-line md:grid-cols-4'>
+            {featured.frames.map((f, i) => (
+              <li key={f.src} className='bg-black-100'>
+                <button
+                  type='button'
+                  onClick={() => {
+                    setActive(i);
+                    setHold(true);
+                  }}
+                  aria-pressed={i === active}
+                  className='group relative w-full px-4 py-4 text-left'
+                >
+                  <span
+                    key={i === active ? `on-${active}` : "off"}
+                    className={`absolute left-0 top-0 h-[2px] bg-violet ${
+                      i === active ? (hold || !inView ? "w-full" : "animate-[grow_3.5s_linear_forwards]") : "w-0"
+                    }`}
+                  />
+                  <span className={`font-display text-sm font-bold ${i === active ? "text-violet-light" : "text-secondary"}`}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className={`mt-1 block text-[15px] font-medium ${i === active ? "text-white" : "text-secondary group-hover:text-white"}`}>
+                    {f.caption}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ol>
         </div>
 
         <div className='mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4'>
-          {featured.highlights.map((h, i) => (
-            <motion.div
-              key={h.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className='bg-primary p-6'
-            >
-              <span className='font-display text-sm font-bold text-violet'>{String(i + 1).padStart(2, "0")}</span>
-              <h3 className='mt-2 text-[22px] font-bold leading-tight text-white'>{h.title}</h3>
+          {featured.highlights.map((h) => (
+            <div key={h.title} className='bg-primary p-6'>
+              <h3 className='text-[22px] font-bold leading-tight text-white'>{h.title}</h3>
               <p className='mt-2 text-[15px] text-secondary'>{h.text}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
 

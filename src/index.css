@@ -145,6 +145,15 @@ html.lenis body {
   }
 }
 
+@keyframes grow {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 /* ------------------------------------------------------------ canvas loader */
 .canvas-loader {
   font-size: 10px;

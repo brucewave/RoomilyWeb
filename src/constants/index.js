@@ -17,8 +17,13 @@ export const contact = {
 export const featured = {
   name: "MTHouse.vn",
   url: "https://www.mthouse.vn",
-  video: "/showcase/mthouse-feature.mp4",
-  poster: "/showcase/mthouse-feature.jpg",
+  // Khung hình cắt từ lúc cuộn trang thật, theo đúng thứ tự hiệu ứng.
+  frames: [
+    { src: "/showcase/mthouse-1.jpg", caption: "Mở đầu" },
+    { src: "/showcase/mthouse-2.jpg", caption: "Cuộn phóng vào cổng vòm" },
+    { src: "/showcase/mthouse-3.jpg", caption: "Công trình trượt ngang" },
+    { src: "/showcase/mthouse-4.jpg", caption: "Không gian hiện theo nhịp cuộn" },
+  ],
   summary:
     "Website công ty kiến trúc & nội thất MT House. Toàn bộ trang kể chuyện bằng chuyển động theo cuộn: mở đầu phóng vào cổng vòm, công trình trượt ngang, chữ và nét vẽ hiện dần theo nhịp cuộn.",
   highlights: [
