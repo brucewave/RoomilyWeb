@@ -34,6 +34,7 @@ export const websiteTypes = [
   { key: "Giáo dục", label: "Website giáo dục" },
   { key: "Bán hàng", label: "Website bán hàng" },
   { key: "Sản phẩm số", label: "Website bán sản phẩm số" },
+  { key: "Dịch vụ", label: "Website dịch vụ" },
   { key: "Doanh nghiệp", label: "Website doanh nghiệp" },
 ];
 
@@ -70,6 +71,27 @@ export const projects = [
     stack: ["Custom code", "Tailwind CSS"],
     summary:
       "Website agency thiết kế web: giới thiệu gói landing page, website giới thiệu, website bán hàng và hệ thống riêng với bảng giá minh bạch. Front-end nhẹ, tải nhanh.",
+  },
+  {
+    name: "GreenGO",
+    url: "http://greengo.io.vn/",
+    media: "greengo",
+    types: ["Dịch vụ"],
+    year: 2026,
+    category: "Dịch vụ thuê xe điện",
+    stack: ["Custom code", "5 ngôn ngữ", "Đặt xe online"],
+    summary:
+      "Website cho thuê xe máy điện VinFast tại Đà Nẵng: bảng giá theo ngày/tháng, thủ tục thuê 5 bước, danh sách chi nhánh và đặt xe nhanh. Chuyển 5 ngôn ngữ (Việt, Anh, Hàn, Trung, Nhật) và tự quy đổi giá sang USD.",
+  },
+  {
+    name: "Lalune.label",
+    url: "https://lalune-label.vercel.app/",
+    media: "lalune",
+    types: ["Bán hàng"],
+    category: "Thời trang local brand",
+    stack: ["Custom code", "Vercel"],
+    summary:
+      "Shop váy local brand phong cách nhẹ nhàng: trang sản phẩm, bảng size, hướng dẫn bảo quản và đặt hàng qua Instagram. Ảnh tối ưu theo kích thước màn hình để tải nhanh.",
   },
   {
     name: "Hoanglongtscl.com",
