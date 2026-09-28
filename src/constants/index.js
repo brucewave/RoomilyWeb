@@ -88,6 +88,7 @@ export const projects = [
     url: "https://lalune-label.vercel.app/",
     media: "lalune",
     types: ["Bán hàng"],
+    year: 2026,
     category: "Thời trang local brand",
     stack: ["Custom code", "Vercel"],
     summary:
