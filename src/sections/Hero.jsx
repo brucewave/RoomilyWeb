@@ -19,15 +19,16 @@ const Arrow = () => (
 );
 
 const Hero = () => (
-  <section id='top' className='relative mx-auto h-screen min-h-[640px] w-full overflow-hidden'>
-    <div className='wrap absolute inset-0 top-[120px] z-10 flex flex-row items-start gap-5 sm:top-[140px]'>
-      <div className='mt-5 flex flex-col items-center justify-center'>
+  <section id='top' className='relative mx-auto w-full overflow-hidden md:h-screen md:min-h-[640px]'>
+    {/* Điện thoại không có mô hình 3D nên hero chỉ cao vừa nội dung, không kéo đầy màn hình. */}
+    <div className='wrap relative z-10 flex flex-row items-start gap-5 pb-16 pt-[120px] md:absolute md:inset-0 md:top-[140px] md:pb-0 md:pt-0'>
+      <div className='mt-5 flex flex-col items-center self-stretch md:self-auto'>
         <motion.div {...rise(0)} className='h-5 w-5 rounded-full bg-violet' />
         <motion.div
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
           transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className='h-72 w-1 origin-top bg-violet/60 sm:h-96'
+          className='w-1 flex-1 origin-top bg-violet/60 md:h-96 md:flex-none'
         />
       </div>
 
@@ -66,7 +67,7 @@ const Hero = () => (
       </Suspense>
     </div>
 
-    <div className='absolute bottom-10 z-10 flex w-full items-center justify-center'>
+    <div className='absolute bottom-10 z-10 hidden w-full items-center justify-center md:flex'>
       <a href='#featured' aria-label='Cuộn xuống phần dự án' onClick={(e) => { e.preventDefault(); scrollToId("featured"); }}>
         <div className='flex h-[64px] w-[35px] items-start justify-center rounded-3xl border-4 border-secondary p-2'>
           <motion.div

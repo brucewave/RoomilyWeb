@@ -14,7 +14,7 @@ const Strengths = () => (
       >
         <p className='eyebrow'>Cam kết khi làm việc với tôi</p>
         <h2 className='section-title mt-4 max-w-4xl'>
-          Làm freelance, nhưng tận tâm như <span className='text-violet'>người trong team.</span>
+          Bạn cứ yên tâm, tôi làm đến khi bạn <span className='text-violet'>ưng ý nhất.</span>
         </h2>
       </motion.div>
     </div>

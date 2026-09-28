@@ -69,7 +69,12 @@ const Projects = ({ filter, setFilter }) => {
           Lọc theo loại website bạn cần. Rê chuột lên ảnh để lướt xem cả trang, bấm vào để mở website thật.
         </SectionHeader>
 
-        <div className='mt-10 flex flex-wrap items-center gap-2' role='group' aria-label='Lọc dự án theo loại website'>
+        {/* Điện thoại: một hàng vuốt ngang; màn hình rộng: xuống dòng bình thường. */}
+        <div
+          className='-mx-gutter mt-10 flex snap-x gap-2 overflow-x-auto px-gutter pb-1 [scrollbar-width:none] md:mx-0 md:flex-wrap md:overflow-visible md:px-0 [&::-webkit-scrollbar]:hidden'
+          role='group'
+          aria-label='Lọc dự án theo loại website'
+        >
           {[{ key: null, label: "Tất cả" }, ...websiteTypes].map(({ key, label }) => {
             const active = filter === key;
             const count = key ? projects.filter((p) => p.types.includes(key)).length : projects.length;
@@ -79,7 +84,7 @@ const Projects = ({ filter, setFilter }) => {
                 type='button'
                 aria-pressed={active}
                 onClick={() => setFilter(key)}
-                className={`min-h-[44px] rounded-full border px-5 text-sm font-medium transition-colors ${
+                className={`min-h-[44px] shrink-0 snap-start whitespace-nowrap rounded-full border px-5 text-sm font-medium transition-colors ${
                   active ? "border-violet bg-violet text-white" : "border-line text-secondary hover:border-violet hover:text-white"
                 }`}
               >
