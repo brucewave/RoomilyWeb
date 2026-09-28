@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import { contact } from "../constants";
@@ -19,9 +19,26 @@ const channels = [
   { label: "Chat Zalo", value: contact.phoneDisplay, href: contact.zalo, icon: icons.chat, external: true },
 ];
 
-const Contact = () => (
-  <section id='contact' className='relative z-0 overflow-hidden py-section'>
-    <div className='wrap flex flex-col-reverse gap-10 xl:flex-row'>
+// Quả địa cầu 3D chỉ hiện khi màn hình đủ rộng để nằm cạnh khung liên hệ;
+// màn hình hẹp không render (không tải three.js) để khỏi thừa một khoảng trống lớn.
+const WIDE = "(min-width: 1280px)";
+const useWide = () => {
+  const [wide, setWide] = useState(() => window.matchMedia(WIDE).matches);
+  useEffect(() => {
+    const mq = window.matchMedia(WIDE);
+    const onChange = (e) => setWide(e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+  return wide;
+};
+
+const Contact = () => {
+  const wide = useWide();
+
+  return (
+  <section id='contact' className='relative z-0 overflow-hidden pb-section pt-4 md:pt-section'>
+    <div className='wrap flex flex-col gap-10 xl:flex-row'>
       <motion.div
         initial={{ opacity: 0, x: -60 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -58,11 +75,13 @@ const Contact = () => (
         </ul>
       </motion.div>
 
-      <div className='h-[350px] md:h-[550px] xl:h-auto xl:flex-1'>
-        <Suspense fallback={null}>
-          <EarthCanvas />
-        </Suspense>
-      </div>
+      {wide && (
+        <div className='min-h-[480px] flex-1'>
+          <Suspense fallback={null}>
+            <EarthCanvas />
+          </Suspense>
+        </div>
+      )}
     </div>
 
     <footer className='wrap mt-20 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-8 text-sm text-secondary'>
@@ -76,6 +95,7 @@ const Contact = () => (
       <StarsCanvas />
     </Suspense>
   </section>
-);
+  );
+};
 
 export default Contact;
