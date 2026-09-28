@@ -5,7 +5,7 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
 
 const Room = ({ isMobile }) => {
-  const room = useGLTF("./isometric_bedroom/scene.gltf");
+  const room = useGLTF("./room.glb");
   const meshRef = useRef();
 
   useFrame((state) => {
@@ -38,7 +38,7 @@ const Room = ({ isMobile }) => {
   );
 };
 
-const RoomCanvas = () => {
+const RoomCanvas = ({ active = true }) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -58,11 +58,10 @@ const RoomCanvas = () => {
 
   return (
     <Canvas
-      frameloop='always'
-      shadows
-      dpr={[1, 2]}
+      frameloop={active ? "always" : "never"}
+      dpr={1}
+      gl={{ antialias: false, powerPreference: "high-performance" }}
       camera={{ position: [20, 3, 5], fov: 25 }}
-      gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls

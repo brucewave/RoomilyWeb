@@ -63,7 +63,7 @@ const Projects = ({ filter, setFilter }) => {
   const visible = filter ? projects.filter((p) => p.types.includes(filter)) : projects;
 
   return (
-    <section id='projects' className='py-section'>
+    <section id='projects' className='pt-section'>
       <div className='wrap'>
         <SectionHeader eyebrow='Tất cả dự án' title={<>{projects.length} website, <span className='text-violet'>mỗi site một bài toán.</span></>}>
           Lọc theo loại website bạn cần. Rê chuột lên ảnh để lướt xem cả trang, bấm vào để mở website thật.

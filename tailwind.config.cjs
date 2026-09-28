@@ -25,7 +25,7 @@ module.exports = {
       },
       spacing: {
         gutter: "clamp(16px, 4vw, 64px)",
-        section: "clamp(88px, 11vw, 160px)",
+        section: "clamp(72px, 9vw, 128px)",
       },
       boxShadow: {
         card: "0px 35px 120px -15px #211e35",

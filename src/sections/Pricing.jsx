@@ -10,7 +10,7 @@ const Check = () => (
 );
 
 const Pricing = () => (
-  <section id='pricing' className='py-section'>
+  <section id='pricing' className='pt-section'>
     <div className='wrap'>
       <SectionHeader eyebrow='Bảng giá' title='Chọn gói phù hợp, tùy biến theo nhu cầu.'>
         Tất cả các gói đều hỗ trợ custom sâu theo yêu cầu, hẹn gặp 1:1 và bảo hành 1:1.

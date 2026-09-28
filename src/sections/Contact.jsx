@@ -1,8 +1,9 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 import { contact } from "../constants";
 import { scrollToId } from "../smooth";
+import useInView from "./useInView";
 
 const EarthCanvas = lazy(() => import("../components/canvas/Earth"));
 const StarsCanvas = lazy(() => import("../components/canvas/Stars"));
@@ -35,9 +36,17 @@ const useWide = () => {
 
 const Contact = () => {
   const wide = useWide();
+  const ref = useRef(null);
+  const inView = useInView(ref);
+  // Chỉ tải mô hình 3D khi người xem đã cuộn gần tới phần liên hệ.
+  const near = useInView(ref, "800px");
+  const [load3d, setLoad3d] = useState(false);
+  useEffect(() => {
+    if (near) setLoad3d(true);
+  }, [near]);
 
   return (
-  <section id='contact' className='relative z-0 overflow-hidden pb-section pt-4 md:pt-section'>
+  <section id='contact' ref={ref} className='relative z-0 overflow-hidden py-section'>
     <div className='wrap flex flex-col gap-10 xl:flex-row'>
       <motion.div
         initial={{ opacity: 0, x: -60 }}
@@ -77,9 +86,11 @@ const Contact = () => {
 
       {wide && (
         <div className='min-h-[480px] flex-1'>
-          <Suspense fallback={null}>
-            <EarthCanvas />
-          </Suspense>
+          {load3d && (
+            <Suspense fallback={null}>
+              <EarthCanvas active={inView} />
+            </Suspense>
+          )}
         </div>
       )}
     </div>
@@ -91,9 +102,11 @@ const Contact = () => {
       </a>
     </footer>
 
-    <Suspense fallback={null}>
-      <StarsCanvas />
-    </Suspense>
+    {load3d && (
+      <Suspense fallback={null}>
+        <StarsCanvas active={inView} />
+      </Suspense>
+    )}
   </section>
   );
 };

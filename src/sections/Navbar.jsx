@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-30 transition-all duration-300 ${
-        scrolled || open ? "border-b border-line bg-primary/85 backdrop-blur-md" : "bg-transparent"
+        scrolled || open ? "border-b border-line bg-primary/95" : "bg-transparent"
       }`}
     >
       <nav className={`wrap flex items-center justify-between transition-all duration-300 ${scrolled ? "h-[72px]" : "h-[96px]"}`}>

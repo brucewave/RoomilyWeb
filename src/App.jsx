@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
@@ -8,12 +8,9 @@ import Projects from "./sections/Projects";
 import Strengths from "./sections/Strengths";
 import Pricing from "./sections/Pricing";
 import Contact from "./sections/Contact";
-import { startSmoothScroll } from "./smooth";
 
 const App = () => {
   const [filter, setFilter] = useState(null);
-
-  useEffect(() => startSmoothScroll(), []);
 
   return (
     <div className='relative z-0 bg-primary'>

@@ -1,41 +1,18 @@
-import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-let lenis = null;
-
-// Cuộn mượt bằng Lenis, đồng bộ với ScrollTrigger (cách MT House làm).
-// Bỏ qua khi người dùng bật giảm chuyển động.
-export const startSmoothScroll = () => {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return () => {};
-
-  lenis = new Lenis({ lerp: 0.1 });
-  lenis.on("scroll", ScrollTrigger.update);
-  const tick = (time) => lenis.raf(time * 1000);
-  gsap.ticker.add(tick);
-  gsap.ticker.lagSmoothing(0);
-
-  return () => {
-    gsap.ticker.remove(tick);
-    lenis.destroy();
-    lenis = null;
-  };
-};
-
+// Cuộn dùng cơ chế gốc của trình duyệt (nhẹ hơn Lenis); nhảy tới section thì cuộn mượt bằng CSS.
 export const scrollToId = (id) => {
-  let target = id === "top" ? 0 : document.getElementById(id);
+  if (id === "top") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+  let target = document.getElementById(id);
   // Khối dự án nổi bật bị ẩn trên điện thoại: nhảy thẳng tới danh sách dự án.
   if (target && target.offsetParent === null) target = document.getElementById("projects");
-  if (lenis) lenis.scrollTo(target, { offset: id === "top" ? 0 : -80 });
-  else if (target === 0) window.scrollTo(0, 0);
-  else target?.scrollIntoView();
-};
-
-export const scrollToPosition = (y) => {
-  if (lenis) lenis.scrollTo(y);
-  else window.scrollTo({ top: y, behavior: "smooth" });
+  target?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
 export { gsap, ScrollTrigger };

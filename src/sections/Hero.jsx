@@ -1,7 +1,8 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useRef } from "react";
 import { motion } from "framer-motion";
 
 import { scrollToId } from "../smooth";
+import useInView from "./useInView";
 
 // Tải mô hình 3D sau khi trang đã hiện chữ, để hero không phải chờ three.js.
 const RoomCanvas = lazy(() => import("../components/canvas/Room"));
@@ -18,8 +19,12 @@ const Arrow = () => (
   </svg>
 );
 
-const Hero = () => (
-  <section id='top' className='relative mx-auto w-full overflow-hidden md:h-screen md:min-h-[640px]'>
+const Hero = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref);
+
+  return (
+  <section id='top' ref={ref} className='relative mx-auto w-full overflow-hidden md:h-screen md:min-h-[640px]'>
     {/* Điện thoại không có mô hình 3D nên hero chỉ cao vừa nội dung, không kéo đầy màn hình. */}
     <div className='wrap relative z-10 flex flex-row items-start gap-5 pb-16 pt-[120px] md:absolute md:inset-0 md:top-[140px] md:pb-0 md:pt-0'>
       <div className='mt-5 flex flex-col items-center self-stretch md:self-auto'>
@@ -63,7 +68,7 @@ const Hero = () => (
 
     <div className='absolute right-0 top-0 hidden h-full w-1/2 md:block'>
       <Suspense fallback={null}>
-        <RoomCanvas />
+        <RoomCanvas active={inView} />
       </Suspense>
     </div>
 
@@ -79,6 +84,7 @@ const Hero = () => (
       </a>
     </div>
   </section>
-);
+  );
+};
 
 export default Hero;

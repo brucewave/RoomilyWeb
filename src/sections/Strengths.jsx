@@ -4,7 +4,7 @@ import { strengths } from "../constants";
 
 // Mỗi cam kết là một hàng full-width chữ lớn; rê chuột thì nền tím trượt ngang qua hàng.
 const Strengths = () => (
-  <section id='strengths' className='py-section'>
+  <section id='strengths' className='pt-section'>
     <div className='wrap'>
       <motion.div
         initial={{ opacity: 0, y: 32 }}
