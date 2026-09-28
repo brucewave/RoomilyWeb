@@ -1,23 +1,31 @@
+import { motion } from "framer-motion";
+
 import { process } from "../constants";
+import SectionHeader from "./SectionHeader";
 
-// Section duy nhất trên mặt kem sáng, giống cách MT House xen mặt warm giữa các nền tối.
 const Process = () => (
-  <section id='process' className='surface-warm py-section'>
+  <section id='process' className='py-section'>
     <div className='wrap'>
-      <div className='grid gap-6 md:grid-cols-[1fr_1.4fr] md:items-end'>
-        <div>
-          <p className='eyebrow'>03 — Cách làm việc</p>
-          <h2 className='section-title mt-4'>Từ yêu cầu đến website chạy thật</h2>
-        </div>
-      </div>
+      <SectionHeader eyebrow='Cách làm việc' title={<>Từ yêu cầu đến <span className='text-gradient'>website chạy thật.</span></>} />
 
-      <ol className='mt-14 grid gap-px bg-line-warm sm:grid-cols-2 lg:grid-cols-4'>
+      <ol className='relative mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4'>
+        {/* Đường nối các bước trên màn hình rộng */}
+        <span className='violet-gradient absolute left-0 right-0 top-7 hidden h-px rotate-180 lg:block' aria-hidden='true' />
         {process.map((step, i) => (
-          <li key={step.title} className='bg-[#F4EEE4] p-6'>
-            <span className='label tabular-nums text-warm-text'>{String(i + 1).padStart(2, "0")}</span>
-            <h3 className='mt-4 font-serif text-h3'>{step.title}</h3>
-            <p className='mt-3 text-[15px] text-warm-text'>{step.text}</p>
-          </li>
+          <motion.li
+            key={step.title}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+            className='relative'
+          >
+            <span className='relative flex h-14 w-14 items-center justify-center rounded-full bg-violet font-display text-xl font-extrabold text-white shadow-glow'>
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <h3 className='mt-6 text-[24px] font-bold text-white'>{step.title}</h3>
+            <p className='mt-2 text-[15px] text-secondary'>{step.text}</p>
+          </motion.li>
         ))}
       </ol>
     </div>

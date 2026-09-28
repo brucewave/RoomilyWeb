@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..500&family=Be+Vietnam+Pro:wght@400;500;600&family=Cormorant+Garamond:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,112 +6,180 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 72px;
+    scroll-padding-top: 90px;
     color-scheme: dark;
-    background: theme("colors.ink");
+    background: theme("colors.primary");
   }
 
   body {
-    @apply bg-ink font-sans text-cream antialiased;
-    font-size: 1rem;
+    @apply bg-primary font-sans text-white-100 antialiased;
     line-height: 1.6;
     overflow-x: clip;
   }
 
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+  }
+
   :focus-visible {
-    outline: 2px solid theme("colors.accent");
+    outline: 2px solid theme("colors.violet-light");
     outline-offset: 3px;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
     *,
     *::before,
     *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
   }
 }
 
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
 @layer components {
   .wrap {
-    @apply mx-auto w-full max-w-[1400px] px-gutter;
+    @apply mx-auto w-full max-w-7xl px-gutter;
   }
 
-  /* Eyebrow của MT House: chữ hoa giãn rộng, mở đầu bằng một vạch ngắn. */
+  /* Eyebrow: chữ hoa giãn rộng mở đầu bằng vạch tím (kỹ thuật lấy từ MT House). */
   .eyebrow {
-    @apply inline-flex items-center gap-[14px] font-display text-xs font-medium uppercase leading-snug tracking-[0.18em] text-accent;
-    font-variation-settings: "wdth" 125;
+    @apply inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-secondary sm:text-sm;
   }
   .eyebrow::before {
     content: "";
     flex: none;
-    width: 32px;
-    height: 1px;
-    background: currentColor;
+    width: 36px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #915eff, rgba(145, 94, 255, 0));
   }
 
   .section-title {
-    @apply font-display text-h2 font-light;
+    @apply font-display text-h2 font-extrabold text-white;
   }
 
-  .label {
-    @apply font-display text-[13px] font-medium uppercase tracking-[0.08em];
-    font-variation-settings: "wdth" 125;
+  /* ---------------------------------------------------------------- CTA */
+  .cta {
+    @apply relative isolate inline-flex min-h-[56px] items-center justify-center gap-3 overflow-hidden rounded-full px-8 font-display text-[17px] font-bold text-white shadow-glow;
+    background: linear-gradient(110deg, #7b3fff 0%, #915eff 45%, #00cea8 130%);
+    transition: transform 160ms ease, box-shadow 320ms ease;
   }
-
-  /* Nút: nền trượt từ dưới lên khi hover, như .btn của MT House. */
-  .btn {
-    @apply relative isolate inline-flex min-h-[52px] items-center justify-center gap-3 overflow-hidden whitespace-nowrap bg-accent px-[26px] text-[15px] font-medium tracking-[0.02em] text-ink;
-    transition: color 320ms cubic-bezier(0.16, 1, 0.3, 1), transform 120ms ease;
-  }
-  .btn::before {
+  /* Vệt sáng quét ngang khi hover. */
+  .cta::before {
     content: "";
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: theme("colors.cream");
+    background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .cta:hover {
+    box-shadow: 0 14px 50px -6px rgba(145, 94, 255, 0.85);
+    transform: translateY(-2px);
+  }
+  .cta:hover::before {
+    transform: translateX(120%);
+  }
+  .cta:active {
+    transform: translateY(0);
+  }
+  .cta__arrow {
+    @apply flex h-8 w-8 items-center justify-center rounded-full bg-white/[.15] transition-transform duration-300;
+  }
+  .cta:hover .cta__arrow {
+    transform: translateX(4px) rotate(-45deg);
+  }
+
+  .cta-ghost {
+    @apply relative isolate inline-flex min-h-[56px] items-center justify-center gap-3 overflow-hidden rounded-full border border-white/20 bg-white/5 px-8 font-display text-[17px] font-semibold text-white backdrop-blur transition-colors duration-300 hover:border-violet;
+  }
+  .cta-ghost::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: theme("colors.violet");
     transform: scaleY(0);
     transform-origin: 50% 100%;
     transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .btn:hover::before,
-  .btn:focus-visible::before {
+  .cta-ghost:hover::before,
+  .cta-ghost:focus-visible::before {
     transform: scaleY(1);
   }
-  .btn:active {
-    transform: translateY(1px);
-  }
-  .btn--small {
-    @apply min-h-[44px] px-5;
-  }
-  .btn--ghost {
-    @apply bg-transparent text-accent;
-    box-shadow: inset 0 0 0 1px theme("colors.accent");
-  }
-  .btn--ghost::before {
-    background: theme("colors.accent");
-  }
-  .btn--ghost:hover,
-  .btn--ghost:focus-visible {
-    @apply text-ink;
-  }
+}
 
-  /* Mặt kem sáng có vân hạt, dùng xen giữa các section tối. */
-  .surface-warm {
-    @apply text-ink;
-    color-scheme: light;
-    background:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 .09'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
-      linear-gradient(160deg, #f1e9dc, #f7f2e9 46%, #fdfbf7);
+/* ------------------------------------------------------------ gradients cũ */
+.violet-gradient {
+  background: linear-gradient(-90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
+}
+.green-pink-gradient {
+  background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+}
+.text-gradient {
+  background: linear-gradient(100deg, #915eff 10%, #00cea8 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ------------------------------------------------------------ marquee */
+.marquee {
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
   }
-  .surface-warm .eyebrow {
-    @apply text-ink;
+}
+
+/* ------------------------------------------------------------ canvas loader */
+.canvas-loader {
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  position: relative;
+  text-indent: -9999em;
+  animation: mulShdSpin 1.1s infinite ease;
+  transform: translateZ(0);
+}
+@keyframes mulShdSpin {
+  0%,
+  100% {
+    box-shadow: 0em -2.6em 0em 0em #ffffff, 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
+      2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2),
+      0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
+      -2.6em 0em 0 0em rgba(255, 255, 255, 0.5), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.7);
   }
-  .surface-warm :focus-visible {
-    outline-color: theme("colors.ink");
+  50% {
+    box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2),
+      2.5em 0em 0 0em rgba(255, 255, 255, 0.5), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.7),
+      0em 2.5em 0 0em #ffffff, -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.2),
+      -2.6em 0em 0 0em rgba(255, 255, 255, 0.2), -1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2);
   }
 }
