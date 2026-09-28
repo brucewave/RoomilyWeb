@@ -1,9 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 
-import { projects } from "../constants";
+import { projects, websiteTypes } from "../constants";
 import SectionHeader from "./SectionHeader";
-
-const projectFilters = ["WooCommerce", "Elementor", "Flatsome", "Custom code", "Tailwind CSS"];
 
 const pad = (n) => String(n).padStart(2, "0");
 
@@ -13,7 +11,7 @@ const ProjectCard = ({ project, index }) => (
     layout
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, scale: 0.96 }}
+    exit={{ opacity: 0, scale: 0.96, transition: { duration: 0.2 } }}
     viewport={{ once: true, amount: 0.2 }}
     transition={{ duration: 0.6, delay: (index % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
     className='group flex flex-col'
@@ -62,30 +60,30 @@ const ProjectCard = ({ project, index }) => (
 );
 
 const Projects = ({ filter, setFilter }) => {
-  const visible = filter ? projects.filter((p) => p.stack.includes(filter)) : projects;
+  const visible = filter ? projects.filter((p) => p.types.includes(filter)) : projects;
 
   return (
     <section id='projects' className='py-section'>
       <div className='wrap'>
         <SectionHeader eyebrow='Tất cả dự án' title={<>{projects.length} website, <span className='text-violet'>mỗi site một bài toán.</span></>}>
-          Rê chuột lên ảnh để lướt xem cả trang. Bấm vào để mở website thật.
+          Lọc theo loại website bạn cần. Rê chuột lên ảnh để lướt xem cả trang, bấm vào để mở website thật.
         </SectionHeader>
 
-        <div className='mt-10 flex flex-wrap items-center gap-2' role='group' aria-label='Lọc dự án theo công nghệ'>
-          {[null, ...projectFilters].map((item) => {
-            const active = filter === item;
-            const count = item ? projects.filter((p) => p.stack.includes(item)).length : projects.length;
+        <div className='mt-10 flex flex-wrap items-center gap-2' role='group' aria-label='Lọc dự án theo loại website'>
+          {[{ key: null, label: "Tất cả" }, ...websiteTypes].map(({ key, label }) => {
+            const active = filter === key;
+            const count = key ? projects.filter((p) => p.types.includes(key)).length : projects.length;
             return (
               <button
-                key={item ?? "all"}
+                key={key ?? "all"}
                 type='button'
                 aria-pressed={active}
-                onClick={() => setFilter(item)}
+                onClick={() => setFilter(key)}
                 className={`min-h-[44px] rounded-full border px-5 text-sm font-medium transition-colors ${
                   active ? "border-violet bg-violet text-white" : "border-line text-secondary hover:border-violet hover:text-white"
                 }`}
               >
-                {item ?? "Tất cả"} <span className='tabular-nums opacity-70'>({count})</span>
+                {label} <span className='tabular-nums opacity-70'>({count})</span>
               </button>
             );
           })}

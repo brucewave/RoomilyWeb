@@ -28,11 +28,21 @@ export const featured = {
     "Website công ty kiến trúc & nội thất MT House. Toàn bộ trang kể chuyện bằng chuyển động theo cuộn: mở đầu phóng vào cổng vòm, công trình trượt ngang, chữ và nét vẽ hiện dần theo nhịp cuộn.",
 };
 
+// Loại website dùng cho nút lọc ở phần dự án; một dự án có thể thuộc nhiều loại.
+export const websiteTypes = [
+  { key: "Kiến trúc", label: "Website kiến trúc" },
+  { key: "Giáo dục", label: "Website giáo dục" },
+  { key: "Bán hàng", label: "Website bán hàng" },
+  { key: "Sản phẩm số", label: "Website bán sản phẩm số" },
+  { key: "Doanh nghiệp", label: "Website doanh nghiệp" },
+];
+
 export const projects = [
   {
     name: "MTHouse.vn",
     url: "https://www.mthouse.vn",
     media: "mthouse",
+    types: ["Kiến trúc", "Doanh nghiệp"],
     year: 2026,
     category: "Kiến trúc & nội thất",
     stack: ["WordPress", "Custom code", "Elementor"],
@@ -43,6 +53,7 @@ export const projects = [
     name: "MtT Nội Thất",
     url: "https://mtt.mthouse.vn",
     media: "mtt",
+    types: ["Kiến trúc", "Bán hàng"],
     year: 2026,
     category: "Thương mại điện tử",
     stack: ["WordPress", "WooCommerce", "Custom code", "Tailwind CSS"],
@@ -53,6 +64,7 @@ export const projects = [
     name: "SidStudio",
     url: "https://studio.sidcorp.co",
     media: "sidstudio",
+    types: ["Sản phẩm số"],
     year: 2026,
     category: "Agency",
     stack: ["Custom code", "Tailwind CSS"],
@@ -63,6 +75,7 @@ export const projects = [
     name: "Hoanglongtscl.com",
     url: "https://hoanglongtscl.com",
     media: "hoanglong",
+    types: ["Doanh nghiệp"],
     year: 2026,
     category: "Doanh nghiệp",
     stack: ["WordPress", "Elementor"],
@@ -73,6 +86,7 @@ export const projects = [
     name: "Finnolla.vn",
     url: "https://finnolla.vn",
     media: "finnolla",
+    types: ["Giáo dục"],
     year: 2025,
     category: "Giáo dục",
     stack: ["WordPress", "Elementor"],
@@ -83,6 +97,7 @@ export const projects = [
     name: "EverestCoffees.com",
     url: "https://everestcoffees.com",
     media: "everest",
+    types: ["Bán hàng"],
     year: 2024,
     category: "Thương mại điện tử",
     stack: ["WordPress", "WooCommerce", "Flatsome"],
@@ -93,6 +108,7 @@ export const projects = [
     name: "HDSPiano.com",
     url: "https://hdspiano.com",
     media: "hdspiano",
+    types: ["Bán hàng", "Sản phẩm số"],
     category: "Thương mại điện tử & khóa học",
     stack: ["WordPress", "WooCommerce"],
     summary:
@@ -102,6 +118,7 @@ export const projects = [
     name: "The.edu.vn",
     url: "https://the.edu.vn",
     media: "the",
+    types: ["Giáo dục"],
     year: 2023,
     category: "Giáo dục",
     stack: ["WordPress"],
@@ -112,6 +129,7 @@ export const projects = [
     name: "Agarclassic.com",
     url: "https://agarclassic.com",
     media: "agarclassic",
+    types: ["Bán hàng"],
     year: 2023,
     category: "Landing page",
     stack: ["WordPress", "Flatsome", "SEO"],
