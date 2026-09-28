@@ -1,27 +1,32 @@
-import { BrowserRouter } from "react-router-dom";
+import { useState } from "react";
 
-import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
+import Navbar from "./sections/Navbar";
+import Hero from "./sections/Hero";
+import Skills from "./sections/Skills";
+import Projects from "./sections/Projects";
+import Process from "./sections/Process";
+import Contact from "./sections/Contact";
 
 const App = () => {
+  const [filter, setFilter] = useState(null);
+
+  const pickSkill = (skill) => {
+    setFilter(skill);
+    document.getElementById("projects")?.scrollIntoView();
+  };
+
   return (
-    <BrowserRouter>
-      <div className='relative z-0 bg-primary'>
-        <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
-          <Navbar />
-          <Hero />
-        </div>
-        <Works />
-        <Experience />
-        <About />
-        {/* <Tech /> */}
-        <div className='relative z-0'>
-          <Contact />
-          <StarsCanvas />
-        </div>
-        <Feedbacks />
-      </div>
-    </BrowserRouter>
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+        <Skills onPickSkill={pickSkill} />
+        <Projects filter={filter} setFilter={setFilter} />
+        <Process />
+        <Contact />
+      </main>
+    </>
   );
-}
+};
 
 export default App;
