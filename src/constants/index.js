@@ -92,6 +92,48 @@ const technologies = [
 
 const experiences = [
   {
+    title: "MTHouse.vn",
+    company_name: "WordPress, Elementor Pro",
+    icon: web,
+    iconBg: "#383E56",
+    date: "2026",
+    videoUrl: "https://www.mthouse.vn",
+    points: [
+      "Corporate website for an architecture & interior design-build firm",
+      "Showcases villas, apartments, homestays, hotels, restaurants and offices",
+      "Custom WordPress theme combined with Elementor Pro layouts",
+      "Lead capture for design & turnkey construction consultations",
+    ],
+  },
+  {
+    title: "MtT Nội Thất (mtt.mthouse.vn)",
+    company_name: "WordPress, WooCommerce",
+    icon: creator,
+    iconBg: "#E6DEDD",
+    date: "2026",
+    videoUrl: "https://mtt.mthouse.vn",
+    points: [
+      "Furniture e-commerce store: sofas, chairs, lighting, cabinets, kitchen",
+      "Custom-coded WordPress theme styled with Tailwind CSS",
+      "Accent-insensitive instant product search (\"ban an\" → \"Bàn ăn\")",
+      "WooCommerce catalog with categories and consultation booking",
+    ],
+  },
+  {
+    title: "SidStudio (studio.sidcorp.co)",
+    company_name: "Custom Build, Tailwind CSS",
+    icon: backend,
+    iconBg: "#383E56",
+    date: "2026",
+    videoUrl: "https://studio.sidcorp.co",
+    points: [
+      "Agency website for a web design & development studio",
+      "Presents landing page, corporate, e-commerce and custom system packages",
+      "Hand-built, lightweight front-end served via Cloudflare",
+      "Transparent pricing and conversion-focused contact flow",
+    ],
+  },
+  {
     title: "EverestCoffees.com",
     company_name: "WordPress, Flatsome",
     icon: web,
@@ -166,6 +208,21 @@ const experiences = [
 const testimonials = {
   videos: [
     {
+      name: "MTHouse.vn",
+      description: "Architecture & interior design-build firm website built with WordPress and Elementor Pro",
+      videoUrl: "https://www.mthouse.vn",
+    },
+    {
+      name: "MtT Nội Thất",
+      description: "Furniture e-commerce store with a custom WordPress theme and WooCommerce",
+      videoUrl: "https://mtt.mthouse.vn",
+    },
+    {
+      name: "SidStudio",
+      description: "Web design agency website with service packages and transparent pricing",
+      videoUrl: "https://studio.sidcorp.co",
+    },
+    {
       name: "EverestCoffees.com",
       description: "E-commerce website for coffee products with WooCommerce integration",
       videoUrl: "https://everestcoffees.com",
@@ -216,6 +273,78 @@ const testimonials = {
 };
 
 const projects = [
+  {
+    name: "MTHouse.vn",
+    description:
+      "Website công ty kiến trúc & nội thất MT House, giới thiệu dịch vụ thiết kế và thi công trọn gói biệt thự, căn hộ, homestay, khách sạn, nhà hàng, văn phòng. Theme WordPress tùy biến kết hợp Elementor Pro.",
+    tags: [
+      {
+        icon: icon_size,
+        text: "WordPress",
+        color: "blue-text-gradient",
+      },
+      {
+        icon: icon_price,
+        text: "Elementor Pro",
+        color: "green-text-gradient",
+      },
+      {
+        icon: icon_furniture,
+        text: "Interior Design",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: web,
+    source_code_link: "https://www.mthouse.vn",
+  },
+  {
+    name: "MtT Nội Thất",
+    description:
+      "Website bán hàng nội thất (sofa, ghế, đèn, tủ kệ, bếp...) với theme WordPress tự code dùng Tailwind CSS, tích hợp WooCommerce và tìm kiếm sản phẩm tức thì hỗ trợ gõ không dấu.",
+    tags: [
+      {
+        icon: icon_size,
+        text: "Custom Theme",
+        color: "blue-text-gradient",
+      },
+      {
+        icon: icon_price,
+        text: "WooCommerce",
+        color: "green-text-gradient",
+      },
+      {
+        icon: icon_furniture,
+        text: "Tailwind CSS",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: creator,
+    source_code_link: "https://mtt.mthouse.vn",
+  },
+  {
+    name: "SidStudio",
+    description:
+      "Website agency thiết kế web SidStudio: giới thiệu các gói landing page, website giới thiệu, website bán hàng và hệ thống riêng, trọn gói A–Z với bảng giá minh bạch. Front-end nhẹ, tối ưu tốc độ.",
+    tags: [
+      {
+        icon: icon_size,
+        text: "Custom Build",
+        color: "blue-text-gradient",
+      },
+      {
+        icon: icon_price,
+        text: "Tailwind CSS",
+        color: "green-text-gradient",
+      },
+      {
+        icon: icon_furniture,
+        text: "Agency",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: backend,
+    source_code_link: "https://studio.sidcorp.co",
+  },
   {
     name: "EverestCoffees.com",
     description:
