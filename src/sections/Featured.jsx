@@ -9,6 +9,7 @@ const STEP_MS = 3500;
 
 // Khối dự án nổi bật: khung trình duyệt lần lượt hiện các khung hình cắt từ lúc cuộn
 // MTHouse.vn thật (ảnh tĩnh, không dùng video), phóng to dần khi cuộn tới.
+// Ẩn trên điện thoại để người xem tới thẳng danh sách dự án.
 const Featured = () => {
   const frameRef = useRef(null);
   const [active, setActive] = useState(0);
@@ -46,7 +47,7 @@ const Featured = () => {
   }, [inView, hold]);
 
   return (
-    <section id='featured' className='pt-section'>
+    <section id='featured' className='hidden pt-section md:block'>
       <div className='wrap'>
         <motion.div
           initial={{ opacity: 0, y: 32 }}
@@ -87,16 +88,16 @@ const Featured = () => {
             </a>
           </div>
 
-          <div className='relative aspect-[16/10]'>
+          <div className='relative aspect-[2/1]'>
             {featured.frames.map((f, i) => (
               <img
                 key={f.src}
                 src={f.src}
                 alt={`${featured.name}: ${f.caption}`}
-                width='1280'
+                width='1600'
                 height='800'
                 loading='lazy'
-                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+                className={`absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-700 ${
                   i === active ? "opacity-100" : "opacity-0"
                 }`}
               />
@@ -134,23 +135,7 @@ const Featured = () => {
           </ol>
         </div>
 
-        <div className='mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4'>
-          {featured.highlights.map((h) => (
-            <div key={h.title} className='bg-primary p-6'>
-              <h3 className='text-[22px] font-bold leading-tight text-white'>{h.title}</h3>
-              <p className='mt-2 text-[15px] text-secondary'>{h.text}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className='mt-8 flex flex-wrap items-center justify-between gap-6'>
-          <ul className='flex flex-wrap gap-2' aria-label='Công nghệ sử dụng'>
-            {featured.stack.map((item) => (
-              <li key={item} className='rounded-full border border-line px-3 py-1 text-sm text-white-100'>
-                {item}
-              </li>
-            ))}
-          </ul>
+        <div className='mt-8 flex justify-end'>
           <a href={featured.url} target='_blank' rel='noopener noreferrer' className='cta'>
             Trải nghiệm hiệu ứng cuộn
             <span className='cta__arrow'>↗</span>

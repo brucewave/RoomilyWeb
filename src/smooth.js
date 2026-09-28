@@ -25,7 +25,9 @@ export const startSmoothScroll = () => {
 };
 
 export const scrollToId = (id) => {
-  const target = id === "top" ? 0 : document.getElementById(id);
+  let target = id === "top" ? 0 : document.getElementById(id);
+  // Khối dự án nổi bật bị ẩn trên điện thoại: nhảy thẳng tới danh sách dự án.
+  if (target && target.offsetParent === null) target = document.getElementById("projects");
   if (lenis) lenis.scrollTo(target, { offset: id === "top" ? 0 : -80 });
   else if (target === 0) window.scrollTo(0, 0);
   else target?.scrollIntoView();

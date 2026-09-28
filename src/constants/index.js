@@ -26,13 +26,6 @@ export const featured = {
   ],
   summary:
     "Website công ty kiến trúc & nội thất MT House. Toàn bộ trang kể chuyện bằng chuyển động theo cuộn: mở đầu phóng vào cổng vòm, công trình trượt ngang, chữ và nét vẽ hiện dần theo nhịp cuộn.",
-  highlights: [
-    { title: "Hero phóng to theo cuộn", text: "Cuộn tới đâu, khung hình tiến sâu vào công trình tới đó." },
-    { title: "Công trình trượt ngang", text: "Section được ghim lại, cuộn dọc biến thành trượt ngang qua từng dự án." },
-    { title: "Chữ & nét vẽ hiện theo nhịp", text: "Tiêu đề tách dòng, bản vẽ tự vẽ ra khi cuộn tới." },
-    { title: "Cuộn mượt toàn trang", text: "Cuộn có quán tính, đồng bộ với mọi hiệu ứng." },
-  ],
-  stack: ["WordPress", "GSAP ScrollTrigger", "Lenis", "Next.js → theme WP", "Song ngữ Việt / Anh"],
 };
 
 export const projects = [
