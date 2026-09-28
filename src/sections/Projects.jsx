@@ -3,6 +3,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { projects } from "../constants";
 import { gsap, ScrollTrigger, scrollToPosition } from "../smooth";
 import SectionHeader from "./SectionHeader";
+import AutoVideo from "./AutoVideo";
 
 const projectFilters = ["WooCommerce", "Elementor", "Flatsome", "Custom code", "Tailwind CSS"];
 
@@ -11,69 +12,52 @@ const PIN_QUERY = "(min-width: 900px) and (min-height: 600px) and (prefers-reduc
 
 const pad = (n) => String(n).padStart(2, "0");
 
-const previewImage = (url) =>
-  `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=1200&h=750`;
-
-const ProjectCard = ({ project, index }) => {
-  const [imageFailed, setImageFailed] = useState(false);
-  const host = project.url.replace(/^https?:\/\//, "");
-
-  return (
-    <li className='work-card w-[85vw] shrink-0 snap-start transition-opacity duration-300 sm:w-[min(52vw,78vh,760px)]'>
+const ProjectCard = ({ project, index }) => (
+  <li className='work-card w-[85vw] shrink-0 snap-start transition-opacity duration-300 sm:w-[min(52vw,78vh,760px)]'>
+    <div className='relative aspect-[16/10] overflow-hidden rounded-2xl bg-tertiary ring-1 ring-line'>
+      <AutoVideo
+        src={`/showcase/${project.media}.mp4`}
+        poster={`/showcase/${project.media}.jpg`}
+        label={`Quay màn hình cuộn trang ${project.name}`}
+        className='h-full w-full'
+      />
+      <span className='absolute left-4 top-4 rounded-full bg-primary/80 px-3 py-1 font-display text-sm font-bold text-white backdrop-blur'>
+        {pad(index + 1)}
+      </span>
       <a
         href={project.url}
         target='_blank'
         rel='noopener noreferrer'
         aria-label={`Mở ${project.name} trong tab mới`}
-        className='group relative block aspect-[16/10] overflow-hidden rounded-2xl bg-tertiary ring-1 ring-line'
+        className='absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-violet text-white transition-colors hover:bg-white hover:text-primary'
       >
-        {imageFailed ? (
-          <div className='flex h-full items-center justify-center font-display text-2xl text-secondary'>{host}</div>
-        ) : (
-          <div className='work-zoom absolute inset-y-0 -left-[8%] w-[116%]'>
-            <img
-              src={previewImage(project.url)}
-              alt={`Ảnh chụp trang chủ ${project.name}`}
-              width='1200'
-              height='750'
-              loading='lazy'
-              onError={() => setImageFailed(true)}
-              className='h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]'
-            />
-          </div>
-        )}
-        <span className='absolute left-4 top-4 rounded-full bg-primary/80 px-3 py-1 font-display text-sm font-bold text-white backdrop-blur'>
-          {pad(index + 1)}
-        </span>
-        <span className='absolute bottom-4 right-4 flex h-11 w-11 items-center justify-center rounded-full bg-violet text-white opacity-0 transition-all duration-300 group-hover:opacity-100 group-focus-visible:opacity-100'>
-          <svg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.2' strokeLinecap='round' aria-hidden='true'>
-            <path d='M7 17L17 7M9 7h8v8' />
-          </svg>
-        </span>
+        <svg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.2' strokeLinecap='round' aria-hidden='true'>
+          <path d='M7 17L17 7M9 7h8v8' />
+        </svg>
       </a>
+    </div>
 
-      <div className='pt-5'>
-        <p className='flex items-center justify-between gap-4 text-sm text-secondary'>
-          <span>{project.category}</span>
-          {project.year && <span className='tabular-nums'>{project.year}</span>}
-        </p>
-        <h3 className='mt-1 text-[30px] font-bold sm:text-[36px] leading-tight text-white'>
-          <a href={project.url} target='_blank' rel='noopener noreferrer' className='transition-colors hover:text-violet-light'>
-            {project.name}
-          </a>
-        </h3>
-        <p className='mt-2 max-w-2xl text-[16px] text-secondary'>{project.summary}</p>
-        <ul className='mt-4 flex flex-wrap gap-2' aria-label='Công nghệ sử dụng'>
-          {project.stack.map((item) => (
-            <li key={item} className='rounded-full border border-line px-3 py-1 text-xs text-white-100'>
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </li>
-  );
-};
+    <div className='pt-5'>
+      <p className='flex items-center justify-between gap-4 text-sm text-secondary'>
+        <span>{project.category}</span>
+        {project.year && <span className='tabular-nums'>{project.year}</span>}
+      </p>
+      <h3 className='mt-1 text-[30px] font-bold sm:text-[36px] leading-tight text-white'>
+        <a href={project.url} target='_blank' rel='noopener noreferrer' className='transition-colors hover:text-violet-light'>
+          {project.name}
+        </a>
+      </h3>
+      <p className='mt-2 max-w-2xl text-[16px] text-secondary'>{project.summary}</p>
+      <ul className='mt-4 flex flex-wrap gap-2' aria-label='Công nghệ sử dụng'>
+        {project.stack.map((item) => (
+          <li key={item} className='rounded-full border border-line px-3 py-1 text-xs text-white-100'>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </li>
+);
 
 const Projects = ({ filter, setFilter }) => {
   const visible = filter ? projects.filter((p) => p.stack.includes(filter)) : projects;
@@ -141,17 +125,6 @@ const Projects = ({ filter, setFilter }) => {
       triggerRef.current = slide.scrollTrigger;
       apply(0);
 
-      // Ảnh trôi nhẹ trong khung khi thẻ trượt qua.
-      cards.forEach((card) => {
-        const zoom = card.querySelector(".work-zoom");
-        if (!zoom) return;
-        gsap.fromTo(zoom, { xPercent: -5 }, {
-          xPercent: 5,
-          ease: "none",
-          scrollTrigger: { trigger: card, containerAnimation: slide, start: "left right", end: "right left", scrub: true },
-        });
-      });
-
       return () => {
         triggerRef.current = null;
         viewport.style.removeProperty("overflow");
@@ -209,8 +182,8 @@ const Projects = ({ filter, setFilter }) => {
   return (
     <section id='projects' ref={sectionRef} className='pt-section'>
       <div className='wrap'>
-        <SectionHeader eyebrow='Dự án' title={<>{projects.length} website, <span className='text-violet'>mỗi site một bài toán.</span></>}>
-          Lọc theo công nghệ để xem tôi đã dùng kỹ năng nào ở đâu. Cuộn xuống để trượt qua từng dự án.
+        <SectionHeader eyebrow='Tất cả dự án' title={<>{projects.length} website, <span className='text-violet'>mỗi site một bài toán.</span></>}>
+          Mỗi thẻ là video quay màn hình website thật. Cuộn xuống để trượt qua từng dự án, hoặc lọc theo công nghệ.
         </SectionHeader>
 
         <div className='mt-10 flex flex-wrap gap-2' role='group' aria-label='Lọc dự án theo công nghệ'>

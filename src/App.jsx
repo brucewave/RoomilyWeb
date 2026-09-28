@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
 import TechMarquee from "./sections/TechMarquee";
+import Featured from "./sections/Featured";
 import Projects from "./sections/Projects";
 import Strengths from "./sections/Strengths";
 import Pricing from "./sections/Pricing";
@@ -22,6 +23,7 @@ const App = () => {
       </div>
       <main>
         <TechMarquee />
+        <Featured />
         <Projects filter={filter} setFilter={setFilter} />
         <Strengths />
         <Pricing />

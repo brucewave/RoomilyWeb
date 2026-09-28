@@ -1,5 +1,5 @@
 export const navLinks = [
-  { id: "projects", title: "Dự án" },
+  { id: "featured", title: "Dự án" },
   { id: "strengths", title: "Cam kết" },
   { id: "pricing", title: "Bảng giá" },
   { id: "contact", title: "Liên hệ" },
@@ -12,10 +12,29 @@ export const contact = {
   zalo: "https://zalo.me/0349402518",
 };
 
+// Dự án nổi bật đặt riêng một khối lớn phía trên danh sách dự án.
+// Các chi tiết kỹ thuật lấy từ mã nguồn D:\MTHouseClone (GSAP, Lenis, Next.js → theme WordPress).
+export const featured = {
+  name: "MTHouse.vn",
+  url: "https://www.mthouse.vn",
+  video: "/showcase/mthouse-feature.mp4",
+  poster: "/showcase/mthouse-feature.jpg",
+  summary:
+    "Website công ty kiến trúc & nội thất MT House. Toàn bộ trang kể chuyện bằng chuyển động theo cuộn: mở đầu phóng vào cổng vòm, công trình trượt ngang, chữ và nét vẽ hiện dần theo nhịp cuộn.",
+  highlights: [
+    { title: "Hero phóng to theo cuộn", text: "Cuộn tới đâu, khung hình tiến sâu vào công trình tới đó." },
+    { title: "Công trình trượt ngang", text: "Section được ghim lại, cuộn dọc biến thành trượt ngang qua từng dự án." },
+    { title: "Chữ & nét vẽ hiện theo nhịp", text: "Tiêu đề tách dòng, bản vẽ tự vẽ ra khi cuộn tới." },
+    { title: "Cuộn mượt toàn trang", text: "Cuộn có quán tính, đồng bộ với mọi hiệu ứng." },
+  ],
+  stack: ["WordPress", "GSAP ScrollTrigger", "Lenis", "Next.js → theme WP", "Song ngữ Việt / Anh"],
+};
+
 export const projects = [
   {
     name: "MTHouse.vn",
     url: "https://www.mthouse.vn",
+    media: "mthouse",
     year: 2026,
     category: "Kiến trúc & nội thất",
     stack: ["WordPress", "Custom code", "Elementor"],
@@ -25,6 +44,7 @@ export const projects = [
   {
     name: "MtT Nội Thất",
     url: "https://mtt.mthouse.vn",
+    media: "mtt",
     year: 2026,
     category: "Thương mại điện tử",
     stack: ["WordPress", "WooCommerce", "Custom code", "Tailwind CSS"],
@@ -34,6 +54,7 @@ export const projects = [
   {
     name: "SidStudio",
     url: "https://studio.sidcorp.co",
+    media: "sidstudio",
     year: 2026,
     category: "Agency",
     stack: ["Custom code", "Tailwind CSS"],
@@ -43,6 +64,7 @@ export const projects = [
   {
     name: "Hoanglongtscl.com",
     url: "https://hoanglongtscl.com",
+    media: "hoanglong",
     year: 2026,
     category: "Doanh nghiệp",
     stack: ["WordPress", "Elementor"],
@@ -52,6 +74,7 @@ export const projects = [
   {
     name: "Finnolla.vn",
     url: "https://finnolla.vn",
+    media: "finnolla",
     year: 2025,
     category: "Giáo dục",
     stack: ["WordPress", "Elementor"],
@@ -61,6 +84,7 @@ export const projects = [
   {
     name: "EverestCoffees.com",
     url: "https://everestcoffees.com",
+    media: "everest",
     year: 2024,
     category: "Thương mại điện tử",
     stack: ["WordPress", "WooCommerce", "Flatsome"],
@@ -70,6 +94,7 @@ export const projects = [
   {
     name: "HDSPiano.com",
     url: "https://hdspiano.com",
+    media: "hdspiano",
     category: "Thương mại điện tử & khóa học",
     stack: ["WordPress", "WooCommerce"],
     summary:
@@ -78,6 +103,7 @@ export const projects = [
   {
     name: "The.edu.vn",
     url: "https://the.edu.vn",
+    media: "the",
     year: 2023,
     category: "Giáo dục",
     stack: ["WordPress"],
@@ -87,6 +113,7 @@ export const projects = [
   {
     name: "Agarclassic.com",
     url: "https://agarclassic.com",
+    media: "agarclassic",
     year: 2023,
     category: "Landing page",
     stack: ["WordPress", "Flatsome", "SEO"],

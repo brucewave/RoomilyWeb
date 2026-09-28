@@ -49,7 +49,7 @@ const Hero = () => (
         </motion.p>
 
         <motion.div {...rise(0.4)} className='pointer-events-auto mt-10 flex flex-wrap gap-4'>
-          <a href='#projects' onClick={(e) => { e.preventDefault(); scrollToId("projects"); }} className='cta'>
+          <a href='#featured' onClick={(e) => { e.preventDefault(); scrollToId("featured"); }} className='cta'>
             Xem dự án
             <span className='cta__arrow'><Arrow /></span>
           </a>
@@ -67,7 +67,7 @@ const Hero = () => (
     </div>
 
     <div className='absolute bottom-10 z-10 flex w-full items-center justify-center'>
-      <a href='#projects' aria-label='Cuộn xuống phần dự án' onClick={(e) => { e.preventDefault(); scrollToId("projects"); }}>
+      <a href='#featured' aria-label='Cuộn xuống phần dự án' onClick={(e) => { e.preventDefault(); scrollToId("featured"); }}>
         <div className='flex h-[64px] w-[35px] items-start justify-center rounded-3xl border-4 border-secondary p-2'>
           <motion.div
             animate={{ y: [0, 24, 0] }}
