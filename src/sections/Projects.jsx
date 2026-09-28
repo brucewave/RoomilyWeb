@@ -19,7 +19,7 @@ const ProjectCard = ({ project, index }) => {
   const host = project.url.replace(/^https?:\/\//, "");
 
   return (
-    <li className='work-card w-[85vw] shrink-0 snap-start transition-opacity duration-300 sm:w-[min(40vw,62vh,540px)]'>
+    <li className='work-card w-[85vw] shrink-0 snap-start transition-opacity duration-300 sm:w-[min(52vw,78vh,760px)]'>
       <a
         href={project.url}
         target='_blank'
@@ -45,7 +45,7 @@ const ProjectCard = ({ project, index }) => {
         <span className='absolute left-4 top-4 rounded-full bg-primary/80 px-3 py-1 font-display text-sm font-bold text-white backdrop-blur'>
           {pad(index + 1)}
         </span>
-        <span className='absolute bottom-4 right-4 flex h-11 w-11 items-center justify-center rounded-full bg-violet text-white opacity-0 shadow-glow transition-all duration-300 group-hover:opacity-100 group-focus-visible:opacity-100'>
+        <span className='absolute bottom-4 right-4 flex h-11 w-11 items-center justify-center rounded-full bg-violet text-white opacity-0 transition-all duration-300 group-hover:opacity-100 group-focus-visible:opacity-100'>
           <svg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.2' strokeLinecap='round' aria-hidden='true'>
             <path d='M7 17L17 7M9 7h8v8' />
           </svg>
@@ -57,12 +57,12 @@ const ProjectCard = ({ project, index }) => {
           <span>{project.category}</span>
           {project.year && <span className='tabular-nums'>{project.year}</span>}
         </p>
-        <h3 className='mt-1 text-[28px] font-bold leading-tight text-white'>
+        <h3 className='mt-1 text-[30px] font-bold sm:text-[36px] leading-tight text-white'>
           <a href={project.url} target='_blank' rel='noopener noreferrer' className='transition-colors hover:text-violet-light'>
             {project.name}
           </a>
         </h3>
-        <p className='mt-2 line-clamp-3 text-[15px] text-secondary'>{project.summary}</p>
+        <p className='mt-2 max-w-2xl text-[16px] text-secondary'>{project.summary}</p>
         <ul className='mt-4 flex flex-wrap gap-2' aria-label='Công nghệ sử dụng'>
           {project.stack.map((item) => (
             <li key={item} className='rounded-full border border-line px-3 py-1 text-xs text-white-100'>
@@ -209,7 +209,7 @@ const Projects = ({ filter, setFilter }) => {
   return (
     <section id='projects' ref={sectionRef} className='pt-section'>
       <div className='wrap'>
-        <SectionHeader eyebrow='Dự án' title={<>{projects.length} website, <span className='text-gradient'>mỗi site một bài toán.</span></>}>
+        <SectionHeader eyebrow='Dự án' title={<>{projects.length} website, <span className='text-violet'>mỗi site một bài toán.</span></>}>
           Lọc theo công nghệ để xem tôi đã dùng kỹ năng nào ở đâu. Cuộn xuống để trượt qua từng dự án.
         </SectionHeader>
 
@@ -224,7 +224,7 @@ const Projects = ({ filter, setFilter }) => {
                 onClick={() => setFilter(item)}
                 className={`min-h-[44px] rounded-full border px-5 text-sm font-medium transition-all ${
                   active
-                    ? "border-violet bg-violet text-white shadow-glow"
+                    ? "border-violet bg-violet text-white"
                     : "border-line text-secondary hover:border-violet hover:text-white"
                 }`}
               >
@@ -241,7 +241,7 @@ const Projects = ({ filter, setFilter }) => {
             {pad(current + 1)} <span className='text-secondary'>/ {pad(visible.length)}</span>
           </p>
           <div className='h-[2px] flex-1 overflow-hidden rounded bg-line'>
-            <span ref={barRef} className='block h-full origin-left scale-x-0 bg-gradient-to-r from-violet to-mint' />
+            <span ref={barRef} className='block h-full origin-left scale-x-0 bg-violet' />
           </div>
           <div className='flex gap-2'>
             <button type='button' className={navButton} aria-label='Dự án trước' disabled={current === 0} onClick={() => goTo(current - 1)}>
@@ -254,7 +254,7 @@ const Projects = ({ filter, setFilter }) => {
         </div>
 
         <div ref={viewportRef} className='mt-8 snap-x snap-mandatory overflow-x-auto [scrollbar-width:none]'>
-          <ol ref={trackRef} key={filter ?? "all"} className='flex w-max gap-8 px-gutter pb-2'>
+          <ol ref={trackRef} key={filter ?? "all"} className='flex w-max gap-10 px-gutter pb-2'>
             {visible.map((project, i) => (
               <ProjectCard key={project.name} project={project} index={i} />
             ))}

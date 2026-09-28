@@ -1,7 +1,7 @@
 export const navLinks = [
-  { id: "skills", title: "Kỹ năng" },
   { id: "projects", title: "Dự án" },
-  { id: "process", title: "Cách làm việc" },
+  { id: "strengths", title: "Cam kết" },
+  { id: "pricing", title: "Bảng giá" },
   { id: "contact", title: "Liên hệ" },
 ];
 
@@ -11,27 +11,6 @@ export const contact = {
   email: "longthanh.dev@gmail.com",
   zalo: "https://zalo.me/0349402518",
 };
-
-// Tên kỹ năng ở đây phải khớp với giá trị trong `stack` của từng dự án
-// để phần Kỹ năng đếm được số dự án và lọc được danh sách dự án.
-export const skillGroups = [
-  {
-    title: "WordPress & WooCommerce",
-    skills: ["WordPress", "WooCommerce", "PHP", "MySQL", "Plugin development"],
-  },
-  {
-    title: "Theme & Page builder",
-    skills: ["Custom code", "Elementor", "Flatsome", "Breakdance Builder"],
-  },
-  {
-    title: "Front-end",
-    skills: ["HTML / CSS", "JavaScript", "Tailwind CSS", "Responsive"],
-  },
-  {
-    title: "Tối ưu",
-    skills: ["SEO", "Tốc độ tải trang", "Chuyển đổi (lead form)"],
-  },
-];
 
 export const projects = [
   {
@@ -116,21 +95,61 @@ export const projects = [
   },
 ];
 
-export const process = [
+// Điểm mạnh khi làm freelance, hiện ở phần "Cam kết".
+export const strengths = [
   {
-    title: "Phân tích yêu cầu",
-    text: "Làm rõ mục tiêu website, đối tượng khách hàng và nội dung cần có trước khi dựng.",
+    title: "Ngồi tại công ty bạn",
+    tag: "Đến khi xong dự án",
+    text: "Cần làm việc trực tiếp? Tôi có thể đến ngồi cùng team của bạn cho tới khi dự án hoàn thành.",
   },
   {
-    title: "Chia việc & ước lượng",
-    text: "Tách nhiệm vụ theo từng hạng mục, ước lượng thời gian và cam kết tiến độ minh bạch với team.",
+    title: "Hẹn gặp 1:1",
+    tag: "Toàn quốc",
+    text: "Gặp mặt trực tiếp để trao đổi yêu cầu, dù bạn ở tỉnh thành nào.",
   },
   {
-    title: "Dựng & tối ưu",
-    text: "Chọn builder hoặc tự code theme theo dự án, tối ưu responsive, tốc độ và SEO.",
+    title: "Làm đến khi ưng ý",
+    tag: "Không bỏ dở",
+    text: "Chỉnh sửa cho tới khi bạn ưng ý nhất thì thôi.",
   },
   {
-    title: "Bàn giao & hỗ trợ",
-    text: "Bàn giao website dễ quản trị nội dung, theo dõi và xử lý phát sinh sau khi chạy thật.",
+    title: "Bảo hành 1:1",
+    tag: "Trực tiếp với tôi",
+    text: "Sau bàn giao, bạn làm việc thẳng với người đã làm ra website khi cần sửa lỗi hay hỗ trợ.",
+  },
+];
+
+// Các dòng mô tả trong từng gói là gợi ý, chủ website chỉnh lại cho đúng thực tế.
+export const pricing = [
+  {
+    name: "Web giới thiệu cơ bản",
+    price: "3 triệu",
+    from: false,
+    features: [
+      "Giới thiệu doanh nghiệp, dịch vụ",
+      "Hiển thị tốt trên điện thoại",
+      "Nút gọi điện, Zalo, form liên hệ",
+    ],
+  },
+  {
+    name: "Web giới thiệu chuyên sâu",
+    price: "10 triệu",
+    from: true,
+    note: "Chuẩn SEO",
+    features: [
+      "Nhiều trang dịch vụ, blog tin tức",
+      "Chuẩn SEO on-page",
+      "Tối ưu tốc độ tải trang",
+    ],
+  },
+  {
+    name: "Web bán hàng",
+    price: "20 triệu",
+    from: true,
+    features: [
+      "WooCommerce: sản phẩm, giỏ hàng, đơn hàng",
+      "Tìm kiếm, lọc sản phẩm",
+      "Chuẩn SEO, tối ưu tốc độ",
+    ],
   },
 ];

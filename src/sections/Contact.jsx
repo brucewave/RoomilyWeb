@@ -31,7 +31,7 @@ const Contact = () => (
       >
         <p className='eyebrow'>Liên hệ</p>
         <h2 className='section-title mt-4'>
-          Cần một website? <span className='text-gradient'>Nói chuyện với tôi.</span>
+          Cần một website? <span className='text-violet'>Nói chuyện với tôi.</span>
         </h2>
 
         <ul className='mt-10 flex flex-col gap-4'>
@@ -40,7 +40,7 @@ const Contact = () => (
               <a
                 href={c.href}
                 {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className='group flex items-center gap-4 rounded-xl border border-line bg-tertiary p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-violet hover:shadow-glow'
+                className='group flex items-center gap-4 rounded-xl border border-line bg-tertiary p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-violet'
               >
                 <span className='flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-violet/[.15] text-violet-light transition-colors group-hover:bg-violet group-hover:text-white'>
                   <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth={2} aria-hidden='true'>
