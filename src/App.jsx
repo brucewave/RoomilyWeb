@@ -14,11 +14,10 @@ const App = () => {
 
   return (
     <div className='relative z-0 bg-primary'>
-      <div className='bg-hero-pattern bg-cover bg-center bg-no-repeat'>
-        <Navbar />
-        <Hero />
-      </div>
-      <main>
+      <Navbar />
+      <Hero />
+      {/* Phần dưới trồi lên che tiêu đề đang mờ dần, như hero của Relay. */}
+      <main className='relative z-10 bg-primary lg:-mt-[45vh] lg:rounded-t-[40px] lg:shadow-[0_-30px_80px_-20px_rgba(5,8,22,0.9)]'>
         <TechMarquee />
         <Featured />
         <Projects filter={filter} setFilter={setFilter} />
