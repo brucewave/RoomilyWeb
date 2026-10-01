@@ -40,6 +40,17 @@ export const websiteTypes = [
 
 export const projects = [
   {
+    name: "GMHouse.vn",
+    url: "https://gmhouse.vn",
+    media: "gmhouse",
+    types: ["Dịch vụ", "Doanh nghiệp"],
+    year: 2026,
+    category: "Cho thuê căn hộ",
+    stack: ["Astro", "Custom code", "SEO"],
+    summary:
+      "Website cho thuê phòng và căn hộ chọn lọc tại TP. Hồ Chí Minh: tìm phòng theo khu vực, loại phòng, giá thuê, xem quỹ phòng trên bản đồ, cẩm nang thuê nhà và form để lại số để được gọi lại tư vấn.",
+  },
+  {
     name: "MTHouse.vn",
     url: "https://www.mthouse.vn",
     media: "mthouse",
